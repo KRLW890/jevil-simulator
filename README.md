@@ -1,7 +1,7 @@
 # Fun Time Simulator (WIP)
 A simulator for the Jevil bossfight in Deltarune. Undertale and Deltarune belong to Toby Fox; I claim nothing.
 
-<br><br>
+<br>
 
 For those interested in helping with this project, here are the details:
 
