@@ -15,8 +15,11 @@ defend animation - full animation immediately upon selection
 */
 
 var menu = {
-    options: new Image()
+    options: new Image(),
+    hpBar: new Image()
 };
+menu.options.src = "images/selections.png";
+menu.hpBar.src = "images/hpbar.png";
 
 var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, idle, intro, fight, magic, act, item, mercy, defend, damage)
 {
@@ -61,18 +64,20 @@ Member.prototype.drawMenu = function(processing, i)
 {
     processing.noStroke();
     processing.fill(51, 32, 51)
-    processing.rect(i*216, 326, 216, 2);
-    processing.rect(i*216, 362, 216, 3);
+    processing.rect(i*213, 326, 216, 2);
+    processing.rect(i*213, 362, 216, 3);
     processing.fill(0);
-    processing.rect(i*216, 328, 216, 34);
+    processing.rect(i*213, 328, 216, 34);
     
-    ctx.drawImage(this.icon, i*216+14, 336);
+    ctx.drawImage(this.icon, i*213+14, 336);
     
-    processing.fill(128, 0, 0);
-    processing.rect(i*216+128, 347, 76, 9);
+    ctx.drawImage(menu.hpBar, i*213+110, 334);
+    hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 335);
+    hpFont.drawText(this.default.hp, (this.current.hp/this.default.hp), (i+1)*213-8, 335);
     processing.fill(this.color);
-    processing.rect(i*216+128, 347, 76*(this.current.hp/this.default.hp), 9);
+    processing.rect(i*213+128, 347, 76*(this.current.hp/this.default.hp), 9);
 };
+
 
 var party = [
     new Member("Kris", -16711681, 90, 10, 2, 0,  4, 0, 0,
@@ -101,7 +106,7 @@ var party = [
                new Animation("images/ralsei-idle.png", 57, 86, 5) // idle
                // intro
                // fight
-               // magic (kris' can just be an empty placeholder)
+               // magic
                // act
                // item
                // mercy
