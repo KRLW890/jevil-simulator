@@ -33,7 +33,7 @@ var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, id
         weapon: weapon,
         armor: [armor1, armor2]
     };
-    this.current = this.default;
+    this.current = JSON.parse(JSON.stringify(this.default)); // the contents need to be converted a string and then converted back st that this.default is a copy, not a pointer
     // TODO: adjust current values based on preferences in localStorage
     
     this.menuSelection = {
@@ -72,8 +72,8 @@ Member.prototype.drawMenu = function(processing, i)
     ctx.drawImage(this.icon, i*213+14, 336);
     
     ctx.drawImage(menu.hpBar, i*213+110, 334);
-    hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 335);
-    hpFont.drawText(this.default.hp, (this.current.hp/this.default.hp), (i+1)*213-8, 335);
+    hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 334);
+    hpFont.drawText(this.default.hp, (this.current.hp/this.default.hp), (i+1)*213-8, 334);
     processing.fill(this.color);
     processing.rect(i*213+128, 347, 76*(this.current.hp/this.default.hp), 9);
 };
