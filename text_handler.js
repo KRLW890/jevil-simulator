@@ -48,7 +48,35 @@ Font.prototype.drawText = function(string, x, y, size)
     }
 };
 
-
+// TODO: double the size of this font
 var defaultFont = new Font("images/DefaultFont.png", 10, 16, 16);
+
+
+var hpFont = new Font("images/hpFont.png", 8, 12, 0);
+hpFont.drawText = function(hp, percent, x, y)
+{
+    var cursor = 0;
+    var row = 0;
+    if (hp <= 0)
+        row = 2;
+    else if (percent <= 0.25)
+        row = 1;
+    
+    while (hp > 0)
+    {
+        ctx.drawImage(this.letterSprites,
+                      (hp%10)*this.width, row*this.height, this.width, this.height,
+                      x+cursor-this.width, y, this.width, this.height);
+        cursor -= this.width;
+        
+        hp = Math.floor(hp/10);
+    }
+    if (hp < 0)
+    {
+        ctx.drawImage(this.letterSprites,
+                      10*this.width, row*this.height, this.width, this.height,
+                      x+cursor, y, this.width, this.height);
+    }
+}
 
 
