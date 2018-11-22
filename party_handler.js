@@ -74,8 +74,11 @@ Member.prototype.drawMenu = function(processing, i)
     ctx.drawImage(menu.hpBar, i*213+110, 334);
     hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 334);
     hpFont.drawText(this.default.hp, (this.current.hp/this.default.hp), (i+1)*213-8, 334);
-    processing.fill(this.color);
-    processing.rect(i*213+128, 347, 76*(this.current.hp/this.default.hp), 9);
+    if (this.current.hp > 0) // so that the hp bar doesn't go backwards when the character has negative hp
+    {
+        processing.fill(this.color);
+        processing.rect(i*213+128, 347, 76*(this.current.hp/this.default.hp), 9);
+    }
 };
 
 
