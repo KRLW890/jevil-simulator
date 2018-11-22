@@ -55,14 +55,19 @@ var defaultFont = new Font("images/DefaultFont.png", 10, 16, 16);
 var hpFont = new Font("images/hpFont.png", 8, 12, 0);
 hpFont.drawText = function(hp, percent, x, y)
 {
-    var cursor = 0;
-    var row = 0;
-    if (hp <= 0)
+    var cursor = 0, row = 0;
+    var negative = false;
+    if (percent <= 0)
+    {
         row = 2;
+        if (hp < 0)
+            negative = true; // so that it won't print -0
+    }
     else if (percent <= 0.25)
         row = 1;
     
-    while (hp > 0)
+    hp = Math.abs(hp);
+    do // a do-while loop makes sure it still prints if the hp is 0
     {
         ctx.drawImage(this.letterSprites,
                       (hp%10)*this.width, row*this.height, this.width, this.height,
@@ -70,13 +75,14 @@ hpFont.drawText = function(hp, percent, x, y)
         cursor -= this.width;
         
         hp = Math.floor(hp/10);
-    }
-    if (hp < 0)
+    } while (hp > 0);
+    
+    if (negative)
     {
         ctx.drawImage(this.letterSprites,
                       10*this.width, row*this.height, this.width, this.height,
-                      x+cursor, y, this.width, this.height);
+                      x+cursor-this.width, y, this.width, this.height);
     }
-}
+};
 
 
