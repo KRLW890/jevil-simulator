@@ -21,7 +21,7 @@ var menu = {
 menu.options.src = "images/selections.png";
 menu.hpBar.src = "images/hpbar.png";
 
-var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, idle, intro, fight, magic, act, item, mercy, defend, damage)
+var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, idle, intro, fight, magic, act, item, mercy, defend)
 {
     this.name = name;
     this.color = color;
