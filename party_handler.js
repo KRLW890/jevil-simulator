@@ -51,11 +51,12 @@ var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, id
     this.item = item;
     this.mercy = mercy;
     this.defend = defend;
-    this.damage = damage;
     
     // these don't have frames, so they can be retrieved automatically
+    this.damage = new Image();
+    //this.damage.src = "images/" + name.toLowerCase() + "_damage.png";
     this.down = new Image();
-    //this.down.src = "images/" + name.toLowerCase() + "-down.png";
+    //this.down.src = "images/" + name.toLowerCase() + "_down.png";
     this.icon = new Image();
     this.icon.src = "images/" + name.toLowerCase() + "-icon.png";
 };
@@ -86,13 +87,12 @@ var party = [
     new Member("Kris", -16711681, 90, 10, 2, 0,  4, 0, 0,
                new Animation("images/kris-idle.png", 72, 78, 6) // idle
                // intro
-               // fight
-               // magic (the pirouette animation for kris)
-               // act
+               //new Animation("images/kris_attack.png", 100, 100, 7), // fight
+               //new Animation("images/kris_pirouette.png", 60, 76, 6), // magic (it's actually Kris' pirouette)
+               //new Animation("images/kris_act.png", 126, 88, 12), // act
                // item
                // mercy
-               // defend
-               // damage
+               //new Animation("images/kris_defend.png", 76, 92, 10) // defend
     ),
     new Member("Susie", -65281, 110, 14, 2, 1,  5, 5, 0,
                new Animation("images/susie-idle.png", 106, 82, 7) // idle
@@ -103,7 +103,6 @@ var party = [
                // item
                // mercy
                // defend
-               // damage
     ),
     new Member("Ralsei", -16711936, 70, 8, 2, 7,  9, 0, 0,
                new Animation("images/ralsei-idle.png", 57, 86, 5) // idle
@@ -114,7 +113,6 @@ var party = [
                // item
                // mercy
                // defend
-               // damage
     )
 ];
 
