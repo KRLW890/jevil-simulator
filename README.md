@@ -1,6 +1,6 @@
-# Fun Time Simulator (WIP)
+# Fun Time Simulator (IamRifki Fork) (WIP)
 A simulator for the Jevil bossfight in Deltarune. Undertale and Deltarune belong to Toby Fox; I claim nothing.<br>
-See what's already done <a href="https://krlw890.github.io/jevil-simulator/Jevil's%20Fun%20Time.html">here</a>.
+See what's already done <a href="https://iamrifki.github.io/jevil-simulator/">here</a>.
 
 <br>
 
