@@ -81,7 +81,7 @@ Here's the sprites we have so far for the party:<br>
 Additional notes:<br>
 <ul>
 <li>Intro refers to the short animation at the start of the battle with the characters going from their overworld to their battle sprites.
-<li>When magic is selected for Susie or Ralsei, there is a short animation loop played between when the action is selected and when the magic is used. This short animation should be at the beginning of the magic animation.
+<li>When magic is selected for Susie or Ralsei, there is a short animation loop played between when the action is selected and when the magic is used. <s>This short animation should be at the beginning of the magic animation.</s> Actually, it might be better if the magic and magic prep animations are separate.
 <li>When Susie is set to select an item, she has a two-frame animation that plays between the selection and the turn, while the others do not. Because of this, Susie's item animation should start with those two frames, while the others should have a frame that is repeated twice at the beginning, so that they're synched up.
 <li>The program uses an HTML canvas which doesn't support gifs. All animations should be in the form of spritesheets with frames next to each other on a single row (like <a href="https://github.com/KRLW890/jevil-simulator/blob/master/images/kris-idle.png">this</a>).
 
