@@ -20,7 +20,7 @@ Here's the sprites we have so far for the party:<br>
  <tr>
   <td>Idle</td>
   <td>Yes</td>
-  <td><strong>We have one, but<br>it's not very high quality</strong></td>
+  <td>Yes</td>
   <td>Yes</td>
  </tr>
  <tr>
