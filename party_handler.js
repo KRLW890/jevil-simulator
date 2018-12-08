@@ -95,7 +95,7 @@ var party = [
                //new Animation("images/kris_defend.png", 76, 92, 10) // defend
     ),
     new Member("Susie", -65281, 110, 14, 2, 1,  5, 5, 0,
-               new Animation("images/susie-idle.png", 106, 82, 7) // idle
+               new Animation("images/susie-idle.png", 106, 82, 4) // idle
                // intro
                // fight
                // magic
