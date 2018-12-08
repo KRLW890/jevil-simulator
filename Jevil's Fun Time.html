@@ -3,6 +3,7 @@
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>Fun Time Simulator | Deltarune Jevil Bossfight</title>
+  <meta name="description" content="A simulator for the Jevil bossfight in Deltarune by Toby Fox. WIP">
   <script src="processing.min.js"></script>
 </head>
 <style>
@@ -19,7 +20,7 @@
 <script>
 var processing;
 
-var main = function(processing)
+var main = function()
 {
     processing.background(43, 51, 159);
 var xy = [{x:74,y:98}, {x:54,y:156}, {x:100,y:214}]; // temporary variables; I plan to implement this better later
@@ -29,15 +30,14 @@ var xy = [{x:74,y:98}, {x:54,y:156}, {x:100,y:214}]; // temporary variables; I p
     }
     
     tp.draw(processing);
-    
-    window.setTimeout(function() { main(processing); }, 33); // this repeats the function at 30 fps
 };
 
 processing = new Processing(canvas, function(processing)
 {
     processing.size(640, 480);
     processing.background(43, 51, 159);
-    main(processing);
+    processing.frameRate(30);
+    processing.draw = main;
 });
 
 </script>
