@@ -48,8 +48,7 @@ Font.prototype.drawText = function(string, x, y, size)
     }
 };
 
-// TODO: double the size of this font
-var defaultFont = new Font("images/DefaultFont.png", 10, 16, 16);
+var defaultFont = new Font("images/DefaultFont.png", 19, 30.5, 16);
 
 
 var hpFont = new Font("images/hpFont.png", 8, 12, 0);
