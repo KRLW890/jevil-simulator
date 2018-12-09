@@ -107,7 +107,7 @@ var party = [
     new Member("Ralsei", -16711936, 70, 8, 2, 7,  9, 0, 0,
                new Animation("images/ralsei-idle.png", 5), // idle
                new Animation("images/ralsei-intro.png", 9), // intro
-               new Animation("images/ralsei-fight.png", 6), // fight
+               new Animation("images/ralsei-attack.png", 6), // fight
                new Animation("images/ralsei-spell.png", 10) // magic
                // act
                //new Animation("images/ralsei-item.png", 8), // item
