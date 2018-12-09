@@ -1,10 +1,10 @@
-var Animation = function(spritesheet, width, height, frames)
+var Animation = function(spritesheet, frames)
 {
     this.sprites = new Image();
     this.sprites.src = spritesheet;
-    this.width = width;
-    this.height = height;
     this.frames = frames;
+    this.width = sprites.width/frames;
+    this.height = sprites.height;
     this.frameCount = 0;
     this.playing = false;
 };
