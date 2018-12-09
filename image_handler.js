@@ -1,6 +1,3 @@
-var canvas = document.getElementById("screen");
-var ctx = canvas.getContext('2d');
-
 var Animation = function(spritesheet, width, height, frames)
 {
     this.sprites = new Image();
