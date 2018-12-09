@@ -85,34 +85,34 @@ Member.prototype.drawMenu = function(processing, i)
 
 var party = [
     new Member("Kris", -16711681, 90, 10, 2, 0,  4, 0, 0,
-               new Animation("images/kris-idle.png", 6) // idle
-               // intro
-               //new Animation("images/kris_attack.png", 7), // fight
-               //new Animation("images/kris_pirouette.png", 6), // magic (it's actually Kris' pirouette)
-               //new Animation("images/kris_act.png", 12), // act
-               // item
+               new Animation("images/kris-idle.png", 6), // idle
+               new Animation("images/kris-intro.png", 12), // intro
+               new Animation("images/kris_attack.png", 7), // fight
+               new Animation("images/kris_pirouette.png", 6), // magic (it's actually Kris' pirouette)
+               new Animation("images/kris_act.png", 12), // act
+               new Animation("images/kris-item.png", 7) // item
                // mercy
                //new Animation("images/kris_defend.png", 10) // defend
     ),
     new Member("Susie", -65281, 110, 14, 2, 1,  5, 5, 0,
                new Animation("images/susie-idle.png", 4) // idle
                // intro
-               // fight
+               //new Animation("images/susie-attack.png", 6), // fight
                // magic
                // act
-               // item
-               // mercy
-               // defend
+               //new Animation("images/susie-item.png", 5), // item
+               //new Animation("images/susie-spare.png", 9), // mercy
+               //new Animation("images/susie-defend.png", 6) // defend
     ),
     new Member("Ralsei", -16711936, 70, 8, 2, 7,  9, 0, 0,
-               new Animation("images/ralsei-idle.png", 5) // idle
-               // intro
-               // fight
-               // magic
+               new Animation("images/ralsei-idle.png", 5), // idle
+               new Animation("images/ralsei-intro.png", 9), // intro
+               new Animation("images/ralsei-fight.png", 6), // fight
+               new Animation("images/ralsei-spell.png", 10) // magic
                // act
-               // item
-               // mercy
-               // defend
+               //new Animation("images/ralsei-item.png", 8), // item
+               //this.magic, // mercy
+               //new Animation("images/ralsei-defend.png", 8) // defend
     )
 ];
 
