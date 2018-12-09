@@ -85,17 +85,17 @@ Member.prototype.drawMenu = function(processing, i)
 
 var party = [
     new Member("Kris", -16711681, 90, 10, 2, 0,  4, 0, 0,
-               new Animation("images/kris-idle.png", 72, 78, 6) // idle
+               new Animation("images/kris-idle.png", 6) // idle
                // intro
-               //new Animation("images/kris_attack.png", 100, 100, 7), // fight
-               //new Animation("images/kris_pirouette.png", 60, 76, 6), // magic (it's actually Kris' pirouette)
-               //new Animation("images/kris_act.png", 126, 88, 12), // act
+               //new Animation("images/kris_attack.png", 7), // fight
+               //new Animation("images/kris_pirouette.png", 6), // magic (it's actually Kris' pirouette)
+               //new Animation("images/kris_act.png", 12), // act
                // item
                // mercy
-               //new Animation("images/kris_defend.png", 76, 92, 10) // defend
+               //new Animation("images/kris_defend.png", 10) // defend
     ),
     new Member("Susie", -65281, 110, 14, 2, 1,  5, 5, 0,
-               new Animation("images/susie-idle.png", 106, 82, 4) // idle
+               new Animation("images/susie-idle.png", 4) // idle
                // intro
                // fight
                // magic
@@ -105,7 +105,7 @@ var party = [
                // defend
     ),
     new Member("Ralsei", -16711936, 70, 8, 2, 7,  9, 0, 0,
-               new Animation("images/ralsei-idle.png", 57, 86, 5) // idle
+               new Animation("images/ralsei-idle.png", 5) // idle
                // intro
                // fight
                // magic
