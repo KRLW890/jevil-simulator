@@ -13,9 +13,9 @@ var Animation = function(spritesheet, width, height, frames)
 // if it is not set to loop, it returns true when the last frame has been played
 Animation.prototype.play = function(x, y, loop, framerate, w, h)
 {
-    if (framerate ===  undefined)
+    if (framerate == undefined)
         framerate = 1; // the speed of the animation is divided by framerate
-    if (w === undefined)
+    if (w == undefined)
     {
         w = this.width;
         h = this.height;
@@ -38,7 +38,7 @@ Animation.prototype.play = function(x, y, loop, framerate, w, h)
 // draws a specific frame of the animation
 Animation.prototype.drawFrame = function(x, y, frame, w, h)
 {
-    if (w === undefined)
+    if (w == undefined)
     {
         w = this.width;
         h = this.height;
