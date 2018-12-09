@@ -25,51 +25,51 @@ Here's the sprites we have so far for the party:<br>
  </tr>
  <tr>
   <td>Intro</td>
+  <td><strong>Frames look out of order</strong></td>
   <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Attack</td>
   <td>Yes</td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Magic</td>
   <td>The pirouette for Kris.<br>We got this one.</td>
   <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Act</td>
   <td>Yes</td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td><strong>Frames look out of order</strong></td>
+  <td><strong>Frames look out of order</strong></td>
  </tr>
  <tr>
   <td>Item</td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Mercy</td>
   <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
+  <td>We can reuse ralsei-spell here,<br>or get another spritesheet</td>
  </tr>
  <tr>
   <td>Defend</td>
   <td>Yes</td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Damage</td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
-  <td><strong>No</strong></td>
+  <td>Yes</td>
+  <td>Yes</td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Down</td>
