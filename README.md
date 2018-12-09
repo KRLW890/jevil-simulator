@@ -25,7 +25,7 @@ Here's the sprites we have so far for the party:<br>
  </tr>
  <tr>
   <td>Intro</td>
-  <td><strong>Frames look out of order</strong></td>
+  <td>Yes</td>
   <td><strong>No</strong></td>
   <td>Yes</td>
  </tr>
