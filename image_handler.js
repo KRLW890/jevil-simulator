@@ -2,10 +2,15 @@ var Animation = function(spritesheet, frames) {
     this.sprites = new Image();
     this.sprites.src = spritesheet;
     this.frames = frames;
-    this.width = this.sprites.width/frames;
-    this.height = this.sprites.height;
     this.frameCount = 0;
     this.playing = false;
+    
+    var obj = this;
+    this.sprites.onload = function()
+    {
+        obj.width = this.width/frames;
+        obj.height = this.height;
+    };
 };
 
 Animation.prototype.play = function(x, y, loop, framerate, w, h) {
