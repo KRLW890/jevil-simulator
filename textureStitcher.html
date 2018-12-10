@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+  div.center {
+    text-align: center;
+  }
+
+  input.styledButton {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+  }
+
+  input.styledButton:hover {
+    background-color: rgba(255, 0, 0, 1);
+  }
+
+  input.styledButton:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+  }
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  img {
+    image-rendering: pixelated
+  }
+
+</style>
+
+<body>
+  <input type="file" accept="image/*" name="image" id="fileInput" class="styledButton" onchange="loadFiles(event)">
+  <br>
+  <div id="output" class="row"></div>
+
+  <canvas id="canvas"></canvas>
+
+  <button onclick="createDownload()">Export</button>
+  <br><br>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = 1500;
+    canvas.height = 0;
+
+    var x = 0;
+
+    var loadFiles = function (event) {
+      let image = new Image();
+      image.onload = drawImage;
+
+      // Load an image of intrinsic size 300x227 in CSS pixels
+      image.src = URL.createObjectURL(event.target.files[0]);
+
+      function drawImage() {
+        if (!canvas.height) {
+          canvas.height = this.naturalHeight;
+        }
+        ctx.drawImage(this, x, 0);
+        x += this.naturalWidth;
+      }
+    }
+
+    var createDownload = function () {
+      var hiddenCanvas = document.createElement("canvas");
+      hiddenCanvas.style.display = "none";
+      hiddenCanvas.width = x;
+      hiddenCanvas.height = canvas.height;
+
+      var hiddenCtx = hiddenCanvas.getContext("2d");
+      hiddenCtx.drawImage(
+        canvas,
+        0,
+        0,
+        hiddenCanvas.width,
+        hiddenCanvas.height,
+        0,
+        0,
+        hiddenCanvas.width,
+        hiddenCanvas.height
+      );
+
+      var data = hiddenCanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+
+      var downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("download", "spritesheet.png");
+      downloadAnchor.innerHTML = "Download";
+      downloadAnchor.setAttribute("href", data);
+      downloadAnchor.setAttribute("class", "styledButton");
+      document.body.appendChild(downloadAnchor);
+    }
+
+  </script>
+</body>
+
+</html>
