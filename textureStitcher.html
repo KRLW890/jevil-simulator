@@ -2,7 +2,7 @@
 <html>
 
 <style>
-  div.center {
+  .center {
     text-align: center;
   }
 
@@ -46,13 +46,15 @@
 </style>
 
 <body>
-  <input type="file" accept="image/*" name="image" id="fileInput" class="styledButton" onchange="loadFiles(event)">
+  <div class="center">
+    <input type="file" accept="image/*" name="image" id="fileInput" class="styledButton" onchange="loadFiles(event)">
+  </div>
   <br>
-  <div id="output" class="row"></div>
-
   <canvas id="canvas"></canvas>
 
-  <button onclick="createDownload()">Export</button>
+  <div class="center">
+    <button onclick="createDownload()">Export</button>
+  </div>
   <br><br>
   <script>
     const canvas = document.getElementById("canvas");
