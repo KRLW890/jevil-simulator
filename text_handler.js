@@ -60,14 +60,17 @@ hpFont.drawText = function(hp, percent, x, y)
     {
         row = 2;
         if (hp < 0)
+        {
             negative = true; // so that it won't print -0
+        }
     }
     else if (percent <= 0.25)
         row = 1;
     
     hp = Math.abs(hp);
-    do // a do-while loop makes sure it still prints if the hp is 0
+    do 
     {
+        // a do-while loop makes sure it still prints if the hp is 0
         ctx.drawImage(this.letterSprites,
                       (hp%10)*this.width, row*this.height, this.width, this.height,
                       x+cursor-this.width, y, this.width, this.height);

@@ -8,10 +8,10 @@ var Animation = function(spritesheet, frames) {
     this.playing = false;
 };
 
-// plays the animation. It can either loop or stop on the last frame
-// if it is not set to loop, it returns true when the last frame has been played
-// the speed of the animation is divided by framerate
 Animation.prototype.play = function(x, y, loop, framerate, w, h) {
+    // plays the animation. It can either loop or stop on the last frame
+    // if it is not set to loop, it returns true when the last frame has been played
+    // the speed of the animation is divided by framerate
     if (framerate == null) 
     {
         framerate = 1; 
@@ -41,8 +41,8 @@ Animation.prototype.play = function(x, y, loop, framerate, w, h) {
     }
 };
 
-// draws a specific frame of the animation
 Animation.prototype.drawFrame = function(x, y, frame, w, h) {
+    // draws a specific frame of the animation
     if (w == null)
     {
         w = this.width;
