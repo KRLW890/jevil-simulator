@@ -5,7 +5,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <title>Fun Time Simulator | Deltarune Jevil Bossfight</title>
   <meta name="description" content="A simulator for the Jevil bossfight in Deltarune by Toby Fox. WIP">
-  <script src="processing.min.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <style>
@@ -13,46 +12,50 @@
     text-align: center;
   }
 </style>
+
 <body bgcolor="black">
   <div class="center">
     <canvas id="screen"></canvas>
     <p>WIP</p>
+
+    <script src="processing.min.js"></script>
+
+    <script src="image_handler.js"></script>
+    <script src="text_handler.js"></script>
+    <script src="item_handler.js"></script>
+    <script src="party_handler.js"></script>
+    <script>
+
+      var canvas = document.getElementById("screen");
+      var ctx = canvas.getContext('2d');
+
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.webkitImageSmoothingEnabled = false;
+      ctx.msImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
+
+      var main = function () {
+        processing.background(43, 51, 159);
+        var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
+        for (var i = 0; i < 3; i++) {
+          party[i].idle.play(xy[i].x, xy[i].y, true, 4);
+          party[i].drawMenu(processing, i);
+        }
+
+        tp.draw(processing);
+      };
+
+      var processing = new Processing(canvas, function (processing) {
+        processing.setup = function () {
+          processing.size(640, 480);
+          processing.background(43, 51, 159);
+          processing.frameRate(30);
+        }
+        processing.draw = main;
+      });
+
+    </script>
+  </div>
 </body>
-<script src="image_handler.js"></script>
-<script src="text_handler.js"></script>
-<script src="item_handler.js"></script>
-<script src="party_handler.js"></script>
-<script>
-
-  var canvas = document.getElementById("screen");
-  var ctx = canvas.getContext('2d');
-
-  ctx.mozImageSmoothingEnabled = false;
-  ctx.webkitImageSmoothingEnabled = false;
-  ctx.msImageSmoothingEnabled = false;
-  ctx.imageSmoothingEnabled = false;
-
-  var main = function () {
-    processing.background(43, 51, 159);
-    var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
-    for (var i = 0; i < 3; i++) {
-      party[i].idle.play(xy[i].x, xy[i].y, true, 4);
-      party[i].drawMenu(processing, i);
-    }
-
-    tp.draw(processing);
-  };
-
-  var processing = new Processing(canvas, function (processing) {
-    processing.setup = function () {
-      processing.size(640, 480);
-      processing.background(43, 51, 159);
-      processing.frameRate(30);
-    }
-    processing.draw = main;
-  });
-
-</script>
-</div>
 
 </html>
