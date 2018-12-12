@@ -54,11 +54,17 @@ var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, id
     
     // these don't have frames, so they can be retrieved automatically
     this.damage = new Image();
-    //this.damage.src = "images/" + name.toLowerCase() + "_damage.png";
+    this.damage.src = "images/" + name.toLowerCase() + "-damage.png";
+    
     this.down = new Image();
-    //this.down.src = "images/" + name.toLowerCase() + "_down.png";
-    this.icon = new Image();
-    this.icon.src = "images/" + name.toLowerCase() + "-icon.png";
+    //this.down.src = "images/" + name.toLowerCase() + "-down.png";
+    
+    this.icons = [new Image(), new Image(), new Image()];
+    for (var i = 0; i < 3; i++)
+        this.icons[i].src = "images/" + name.toLowerCase() + "-icon" + i + ".png";
+    
+    this.menuName = new Image();
+    this.menuName.src = "images/" + name.toLowerCase() + "-text.png";
 };
 
 Member.prototype.drawMenu = function(processing, i)
@@ -70,7 +76,8 @@ Member.prototype.drawMenu = function(processing, i)
     processing.fill(0);
     processing.rect(i*213, 328, 216, 34);
     
-    ctx.drawImage(this.icon, i*213+14, 336);
+    ctx.drawImage(this.icons[0], i*213+14, 336);
+    ctx.drawImage(this.menuName, i*213+51, 339);
     
     ctx.drawImage(menu.hpBar, i*213+110, 334);
     hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 334);
