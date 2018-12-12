@@ -44,8 +44,8 @@ Here's the sprites we have so far for the party:<br>
  <tr>
   <td>Act</td>
   <td>Yes</td>
-  <td><strong>Frames look out of order</strong></td>
-  <td><strong>Frames look out of order</strong></td>
+  <td>Yes</td>
+  <td>Yes</td>
  </tr>
  <tr>
   <td>Item</td>
