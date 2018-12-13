@@ -21,10 +21,14 @@ Animation.prototype.play = function(x, y, loop, framerate, w, h) {
     {
         framerate = 1; 
     }
-    if (w == null)
-    {
-        w = this.width;
-        h = this.height;
+    if (h == null) {
+        if (w == null) {
+            w = this.width;
+            h = this.height;
+        } else {
+            h = w * this.height;
+            w = w * this.width;
+        }
     }
     
     if (this.playing === false) 
@@ -48,10 +52,14 @@ Animation.prototype.play = function(x, y, loop, framerate, w, h) {
 
 Animation.prototype.drawFrame = function(x, y, frame, w, h) {
     // draws a specific frame of the animation
-    if (w == null)
-    {
-        w = this.width;
-        h = this.height;
+    if (h == null) {
+        if (w == null) {
+            w = this.width;
+            h = this.height;
+        } else {
+            h = w * this.height;
+            w = w * this.width;
+        }
     }
     
     ctx.drawImage(this.sprites, this.width*frame, 0, this.width, this.height, x, y, w, h);
