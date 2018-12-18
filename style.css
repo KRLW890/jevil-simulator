@@ -1,16 +1,22 @@
-body {
+@font-face {
+    font-family: 8bitoperatorJVE;
+    src: url('./fonts/8bitoperator_jve.ttf') format('truetype');
+    font-weight: Medium;
+    font-style: normal;
+}
+body  {
     text-align: center;
+    background-color: black;
 }
-
-p {
-    color: white;
-}
-
-.center {
+.center  {
     position: absolute;
     top: 50%;
     left: 50%;
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+}
+p {
+    font-family: 8bitoperatorJVE;
+    color: white;
 }
