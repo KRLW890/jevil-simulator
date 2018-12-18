@@ -1,11 +1,16 @@
-.center{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -moz-transform: translateX(-50%) translateY(-50%);
-          -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+body {
+    text-align: center;
 }
-p{
-          color: white;
+
+p {
+    color: white;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }

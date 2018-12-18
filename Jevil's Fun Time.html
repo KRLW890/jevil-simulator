@@ -8,23 +8,27 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <style>
-  body {
-    text-align: center;
-  }
+
 </style>
 
 <body bgcolor="black">
-  <div class="center">
-    <canvas id="screen"></canvas>
-    <p>WIP</p>
+
+  <div id="p5_loading" class="center">
+    <!--
+      The loading screen.
+    -->
+    <p>Loading: Please wait.</p>
   </div>
-  <script src="processing.min.js"></script>
+
+  <div class="center" id="game-container"></div>
+
+  <script src=p5.min.js></script>
 
   <script src="image_handler.js"></script>
-  <script src="text_handler.js"></script>
   <script src="item_handler.js"></script>
   <script src="party_handler.js"></script>
-  
+
+  <script src="init.js"></script>
   <script src="game.js"></script>
 </body>
 

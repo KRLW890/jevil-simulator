@@ -14,15 +14,10 @@ spare animations - no animation until the turn is active. kris uses act animatio
 defend animation - full animation immediately upon selection
 */
 
-var menu = {
-    options: new Image(),
-    hpBar: new Image()
-};
-menu.options.src = "images/selections.png";
-menu.hpBar.src = "images/hpbar.png";
-
-var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, idle, intro, fight, magic, act, item, mercy, defend)
-{
+var Member = function (name, color,
+    hp, atk, def, mgc, weapon, armor1, armor2,
+    idle, intro, fight, magic, act, item, mercy, defend,
+    damage, down, menuName, icons) {
     this.name = name;
     this.color = color;
     this.default = {
@@ -33,15 +28,16 @@ var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, id
         weapon: weapon,
         armor: [armor1, armor2]
     };
+
     this.current = JSON.parse(JSON.stringify(this.default)); // the contents need to be converted a string and then converted back st that this.default is a copy, not a pointer
     // TODO: adjust current values based on preferences in localStorage
-    
+
     this.menuSelection = {
         hasSelected: false,
         category: 0,
         suboption: 0
     };
-    
+
     // sprite animations. We have to pass these in manually because the number of frames can be different for each one
     this.idle = idle;
     this.intro = intro; // for the beginning of the battle before the first turn
@@ -51,100 +47,36 @@ var Member = function(name, color, hp, atk, def, mgc, weapon, armor1, armor2, id
     this.item = item;
     this.mercy = mercy;
     this.defend = defend;
-    
-    // these don't have frames, so they can be retrieved automatically
-    this.damage = new Image();
-    this.damage.src = "images/" + name.toLowerCase() + "-damage.png";
-    
-    this.down = new Image();
-    //this.down.src = "images/" + name.toLowerCase() + "-down.png";
-    
-    this.icons = [new Image(), new Image(), new Image()];
-    for (var i = 0; i < 3; i++)
-        this.icons[i].src = "images/" + name.toLowerCase() + "-icon" + i + ".png";
-    
-    this.menuName = new Image();
-    this.menuName.src = "images/" + name.toLowerCase() + "-text.png";
-};
+    this.damage = damage;
+    this.down = down;
+    this.menuName = menuName;
+    this.icons = icons;
+}
 
-Member.prototype.drawMenu = function(processing, i)
-{
-    processing.noStroke();
-    processing.fill(51, 32, 51)
-    processing.rect(i*213, 326, 216, 2);
-    processing.rect(i*213, 362, 216, 3);
-    processing.fill(0);
-    processing.rect(i*213, 328, 216, 34);
-    
-    ctx.drawImage(this.icons[0], i*213+14, 336);
-    ctx.drawImage(this.menuName, i*213+51, 339);
-    
-    ctx.drawImage(menu.hpBar, i*213+110, 334);
-    hpFont.drawText(this.current.hp, (this.current.hp/this.default.hp), (i+1)*213-53, 334);
-    hpFont.drawText(this.default.hp, (this.current.hp/this.default.hp), (i+1)*213-8, 334);
-    if (this.current.hp > 0) // so that the hp bar doesn't go backwards when the character has negative hp
-    {
-        processing.fill(this.color);
-        processing.rect(i*213+128, 347, 76*(this.current.hp/this.default.hp), 9);
+
+Member.prototype.drawMenu = function (i) {
+    noStroke();
+    fill(51, 32, 51)
+    rect(i * 213, 326, 216, 2);
+    rect(i * 213, 362, 216, 3);
+    fill(0);
+    rect(i * 213, 328, 216, 34);
+
+    image(this.icons[0], i * 213 + 14, 336);
+    image(this.menuName, i * 213 + 51, 339);
+
+    image(sprites.menu.hpBar, i * 213 + 110, 334);
+    textFont(fonts.main);
+    textSize(20);
+    fill(255);
+    //TODO: reposition text and hpBar
+    //text(this.current.hp, (this.current.hp / this.default.hp), (i + 1) * 213 - 53);
+    //text(this.default.hp, (this.current.hp / this.default.hp), (i + 1) * 213 - 8);
+    if (this.current.hp > 0) {
+        // so that the hp bar doesn't go backwards when the character has negative hp
+        fill(this.color);
+        rect(i * 213 + 128, 347, 76 * (this.current.hp / this.default.hp), 9);
     }
-};
+}
 
-
-var party = [
-    new Member("Kris", -16711681, 90, 10, 2, 0,  4, 0, 0,
-               new Animation("images/kris-idle.png", 6), // idle
-               new Animation("images/kris-intro.png", 12), // intro
-               new Animation("images/kris_attack.png", 7), // fight
-               new Animation("images/kris_pirouette.png", 6), // magic (it's actually Kris' pirouette)
-               new Animation("images/kris_act.png", 12), // act
-               new Animation("images/kris-item.png", 7) // item
-               // mercy
-               //new Animation("images/kris_defend.png", 10) // defend
-    ),
-    new Member("Susie", -65281, 110, 14, 2, 1,  5, 5, 0,
-               new Animation("images/susie-idle.png", 4) // idle
-               // intro
-               //new Animation("images/susie-attack.png", 6), // fight
-               // magic
-               // act
-               //new Animation("images/susie-item.png", 5), // item
-               //new Animation("images/susie-spare.png", 9), // mercy
-               //new Animation("images/susie-defend.png", 6) // defend
-    ),
-    new Member("Ralsei", -16711936, 70, 8, 2, 7,  9, 0, 0,
-               new Animation("images/ralsei-idle.png", 5), // idle
-               new Animation("images/ralsei-intro.png", 9), // intro
-               new Animation("images/ralsei-attack.png", 6), // fight
-               new Animation("images/ralsei-spell.png", 10) // magic
-               // act
-               //new Animation("images/ralsei-item.png", 8), // item
-               //this.magic, // mercy
-               //new Animation("images/ralsei-defend.png", 8) // defend
-    )
-];
-
-
-
-var tp = {
-    percent: 0,
-    image: new Image(),
-    draw: function(processing)
-    {
-        processing.noStroke();
-        processing.fill(128, 0, 0);
-        processing.rect(42, 46, 19, 187);
-        processing.stroke(255);
-        processing.strokeWeight(2);
-        processing.fill(255, 160, 64);
-        processing.rect(40, (1-(this.percent/100))*189+46, 23, 188-(1-(this.percent/100))*189);
-        
-        ctx.drawImage(this.image, 9, 41);
-        if (this.percent < 100)
-        {
-            defaultFont.drawText(this.percent+"", 9, 118);
-            defaultFont.drawText("%", 14, 143);
-        }
-    }
-};
-tp.image.src = "images/tp.png";
 
