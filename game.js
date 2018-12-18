@@ -11,7 +11,6 @@ function setup() {
     frameRate(30);
     //For testing only
     printText = function (t, x, y) {
-        console.log(pointer);
         text(t.slice(0, ceil(pointer)), x, y);
     }
 }
