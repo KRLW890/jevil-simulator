@@ -1,4 +1,4 @@
-var krisAnim;
+var printTest, pointer = 0;
 
 function preload() {
     initAll();
@@ -9,6 +9,11 @@ function setup() {
     canvas.parent("game-container");
     noSmooth();
     frameRate(30);
+    //For testing only
+    printText = function (t, x, y) {
+        console.log(pointer);
+        text(t.slice(0, ceil(pointer)), x, y);
+    }
 }
 
 function draw() {
@@ -20,4 +25,11 @@ function draw() {
     }
 
     //tpBar.display();
+
+    //for testing fonts:
+    textFont(fonts.main);
+    fill(255);
+    textSize(150);
+    printText("Hello,\n World", 100, 100, 10);
+    pointer += 0.1;
 }
