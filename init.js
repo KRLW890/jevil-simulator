@@ -63,43 +63,39 @@ function loadSprites() {
             hpBar: loadImage("images/hpbar.png")
         },
         tpBar: loadImage("images/tpBar.png")
-    }
-}
+    };
+};
 
 function loadFonts() {
     fonts = {
-        main: loadFont("fonts/8bitoperator_jve.ttf"),
-        hp: loadFont("fonts/hpfont.ttf")
-    }
-}
+        main: loadFont("fonts/8bitoperator_jve.ttf"), // default size: 32
+        hp: loadFont("fonts/hpfont.ttf")              // default size: 6
+    };
+};
 
 function initParty() {
     party = [
-        new Member("Kris", -16711681, 90, 10, 2, 0, 4, 0, 0,
+        new Member("Kris", color(0, 255, 255), 90, 10, 2, 0, 4, 0, 0,
             new SpriteAnimation(sprites.kris.idle, 6), // idle
             new SpriteAnimation(sprites.kris.intro, 12), // intro
             new SpriteAnimation(sprites.kris.fight, 7), // fight
             new SpriteAnimation(sprites.kris.magic, 6), // magic (it's actually Kris' pirouette)
             new SpriteAnimation(sprites.kris.act, 12), // act
             new SpriteAnimation(sprites.kris.item, 7), // item
-            null, // mercy  TODO: add SpriteAnimation
-            null, // mercy  TODO: add SpriteAnimation
-            sprites.kris.damage, // damage
-            sprites.kris.down, // down
-            sprites.kris.menuName, // menu name sprite
-            sprites.kris.icons // icons
+            null, // mercy   TODO: add SpriteAnimation
+            null, // defend  TODO: add SpriteAnimation
         ),
-        new Member("Susie", -65281, 110, 14, 2, 1, 5, 5, 0,
-            new SpriteAnimation(sprites.susie.idle, 4) // idle
-            // intro
-            //new SpriteAnimation("images/susie-attack.png", 6), // fight
-            // magic
-            // act
-            //new SpriteAnimation("images/susie-item.png", 5), // item
-            //new SpriteAnimation("images/susie-spare.png", 9), // mercy
-            //new SpriteAnimation("images/susie-defend.png", 6) // defend
+        new Member("Susie", color(255, 0, 255), 110, 14, 2, 1, 5, 5, 0,
+            new SpriteAnimation(sprites.susie.idle, 4), // idle
+            null, // intro
+            new SpriteAnimation("images/susie-attack.png", 6), // fight
+            null, // magic
+            null, // act
+            new SpriteAnimation("images/susie-item.png", 5), // item
+            new SpriteAnimation("images/susie-spare.png", 9), // mercy
+            new SpriteAnimation("images/susie-defend.png", 6) // defend
         ),
-        new Member("Ralsei", -16711936, 70, 8, 2, 7, 9, 0, 0,
+        new Member("Ralsei", color(0, 255, 0), 70, 8, 2, 7, 9, 0, 0,
             new SpriteAnimation(sprites.ralsei.idle, 5), // idle
             new SpriteAnimation(sprites.ralsei.intro, 9), // intro
             new SpriteAnimation(sprites.ralsei.fight, 6), // fight
@@ -110,7 +106,7 @@ function initParty() {
             //new SpriteAnimation("images/ralsei-defend.png", 8) // defend
         )
     ];
-}
+};
 
 
 function initTPBar() {
@@ -129,18 +125,26 @@ function initTPBar() {
 
             image(this.image, 9, 41);
 
+            textFont(fonts.main);
+            textSize(32);
             if (this.percent < 100) {
-                // TODO: Reposition
-                text(this.percent + "", 9, 118);
-                text("%", 14, 143);
+                fill(255);
+                text(this.percent + "", 9, 135);
+                text("%", 14, 160);
+            }
+            else {
+                fill(255, 255, 0);
+                text("M", 9, 135);
+                text("A", 14, 155);
+                text("X", 19, 175);
             }
         }
     };
-}
+};
 
 function initAll() {
     loadSprites();
     loadFonts();
     initParty();
     initTPBar();
-}
+};
