@@ -16,8 +16,7 @@ defend animation - full animation immediately upon selection
 
 var Member = function (name, color,
     hp, atk, def, mgc, weapon, armor1, armor2,
-    idle, intro, fight, magic, act, item, mercy, defend,
-    damage, down, menuName, icons) {
+    idle, intro, fight, magic, act, item, mercy, defend) {
     this.name = name;
     this.color = color;
     this.default = {
@@ -29,7 +28,7 @@ var Member = function (name, color,
         armor: [armor1, armor2]
     };
 
-    this.current = JSON.parse(JSON.stringify(this.default)); // the contents need to be converted a string and then converted back st that this.default is a copy, not a pointer
+    this.current = JSON.parse(JSON.stringify(this.default)); // the contents need to be converted a string and then converted back so that this.current is a copy, not a pointer
     // TODO: adjust current values based on preferences in localStorage
 
     this.menuSelection = {
@@ -47,11 +46,13 @@ var Member = function (name, color,
     this.item = item;
     this.mercy = mercy;
     this.defend = defend;
-    this.damage = damage;
-    this.down = down;
-    this.menuName = menuName;
-    this.icons = icons;
-}
+    
+    // these can be retrieved automatically
+    this.damage = sprites[this.name.toLowerCase()].damage;
+    this.down = sprites[this.name.toLowerCase()].down;
+    this.menuName = sprites[this.name.toLowerCase()].menuName;
+    this.icons = sprites[this.name.toLowerCase()].icons;
+};
 
 
 Member.prototype.drawMenu = function (i) {
@@ -66,12 +67,19 @@ Member.prototype.drawMenu = function (i) {
     image(this.menuName, i * 213 + 51, 339);
 
     image(sprites.menu.hpBar, i * 213 + 110, 334);
-    textFont(fonts.main);
-    textSize(20);
-    fill(255);
-    //TODO: reposition text and hpBar
-    //text(this.current.hp, (this.current.hp / this.default.hp), (i + 1) * 213 - 53);
-    //text(this.default.hp, (this.current.hp / this.default.hp), (i + 1) * 213 - 8);
+    textFont(fonts.hp);
+    textSize(6);
+    textAlign(RIGHT);
+    if (this.current.hp <= 0)
+        fill(255, 0, 0);
+    else if (this.current.hp/this.default.hp <= 0.25)
+        fill(255, 255, 0);
+    else
+        fill(255);
+    text(this.current.hp, (i + 1) * 213 - 53, 344);
+    text(this.default.hp, (i + 1) * 213 - 8, 344);
+    textAlign(LEFT);
+    
     if (this.current.hp > 0) {
         // so that the hp bar doesn't go backwards when the character has negative hp
         fill(this.color);
