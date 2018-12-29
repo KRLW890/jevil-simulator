@@ -1,11 +1,9 @@
 var SpriteAnimation = function (spritesheet, frames) {
     this.spritesheet = spritesheet;
-    this.width = this.spritesheet.width / frames;
-    this.height = this.spritesheet.height;
     this.frames = frames;
     this.frameCount = 0;
     this.playing = false;
-}
+};
 
 
 
@@ -18,12 +16,15 @@ SpriteAnimation.prototype.play = function (x, y, loop, framerate, w, h) {
     }
     if (h == null) {
         if (w == null) {
-            w = this.width;
-            h = this.height;
+            w = this.spritesheet.width/this.frames;
+            h = this.spritesheet.height;
         } else {
-            h = w * this.height;
-            w = w * this.width;
+            h = w * this.spritesheet.height;
+            w = w * this.spritesheet.width;
         }
+    } else {
+        h = h * this.spritesheet.height;
+        w = w * this.spritesheet.width;
     }
 
     if (this.playing === false) {
@@ -31,8 +32,8 @@ SpriteAnimation.prototype.play = function (x, y, loop, framerate, w, h) {
         this.frameCount = 0;
         this.playing = true;
     }
-
-    image(this.spritesheet, x, y, w, h, this.width * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.width, this.height);
+    
+    image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 
     if (loop || this.frameCount < this.frames - 1) {
         this.frameCount++;
@@ -48,15 +49,18 @@ SpriteAnimation.prototype.drawFrame = function (x, y, frame, w, h) {
     // draws a specific frame of the animation
     if (h == null) {
         if (w == null) {
-            w = this.width;
-            h = this.height;
+            w = this.spritesheet.width/this.frames;
+            h = this.spritesheet.height;
         } else {
-            h = w * this.height;
-            w = w * this.width;
+            h = w * this.spritesheet.height;
+            w = w * this.spritesheet.width;
         }
+    } else {
+        h = h * this.spritesheet.height;
+        w = w * this.spritesheet.width;
     }
 
-    image(this.spritesheet, x, y, w, h, this.width * frame, 0, this.width, this.height);
+    image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 }
 
 
