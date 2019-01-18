@@ -32,6 +32,9 @@ function draw() {
     printText("Hello,\n World", 100, 100, 10);
     pointer += 0.1;
 */
+    
+    if (true) // if it's not in the bullet hell phase
+        handleKeys();
 };
 
 
