@@ -2,6 +2,27 @@ var canvas, sprites, fonts;
 
 var party, tpBar;
 
+var turnPhase = 0, currentTurn = 0;
+
+var keys = {
+    all: [],
+    up: 38, down: 40, left: 37, right: 39,
+    select: 90, cancel: 88,
+    pressed: function(code) {
+        return keys.all[code];
+    }
+};
+function keyPressed() {
+    keys.all[keyCode] = true;
+};
+function keyReleased() {
+    keys.all[keyCode] = false;
+};
+function handleKeys() { // so that key events only activate once per press, rather than every frame
+    for (var i = 0; i < keys.all.length; i++)
+        keys.all[i] = false;
+};
+
 function loadSprites() {
     sprites = {
         kris: {
@@ -59,8 +80,9 @@ function loadSprites() {
             ]
         },
         menu: {
-            options: loadImage("images/selections.png"),
-            hpBar: loadImage("images/hpbar.png")
+            hpBar: loadImage("images/hpbar.png"),
+            options: loadImage("images/menu.png"),
+            selected: loadImage("images/selections.png")
         },
         tpBar: loadImage("images/tpBar.png")
     };
@@ -68,8 +90,8 @@ function loadSprites() {
 
 function loadFonts() {
     fonts = {
-        main: loadFont("fonts/8bitoperator_jve.ttf"), // default size: 32
-        hp: loadFont("fonts/hpfont.ttf")              // default size: 6
+        main: loadFont("fonts/8bitoperator_jve.ttf"),
+        hp: loadFont("fonts/hpfont.ttf")
     };
 };
 
