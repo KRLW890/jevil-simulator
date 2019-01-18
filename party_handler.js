@@ -32,10 +32,10 @@ var Member = function (name, color,
     // TODO: adjust current values based on preferences in localStorage
 
     this.menuSelection = {
-        hasSelected: false,
         category: 0,
         suboption: 0
     };
+    this.menuHeight = 0; // so that the menu slides up for the turn selection
 
     // sprite animations. We have to pass these in manually because the number of frames can be different for each one
     this.idle = idle;
@@ -55,18 +55,65 @@ var Member = function (name, color,
 };
 
 
-Member.prototype.drawMenu = function (i) {
-    noStroke();
-    fill(51, 32, 51)
-    rect(i * 213, 326, 216, 2);
-    rect(i * 213, 362, 216, 3);
-    fill(0);
-    rect(i * 213, 328, 216, 34);
+Member.prototype.options = function(i) {
+    if (this.menuSelection.category == 5)
+        this.menuSelection.category = 1;
+    
+    if (keys.pressed(keys.left)) {
+        if (this.menuSelection.category == 0)
+            this.menuSelection.category = 4;
+        else
+            this.menuSelection.category--;
+    }
+    else if (keys.pressed(keys.right)) {
+        if (this.menuSelection.category == 4)
+            this.menuSelection.category = 0;
+        else
+            this.menuSelection.category++;
+    }
+    
+    image(sprites.menu.options, i * 213 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
+    
+    if (i == 0 && this.menuSelection.category == 1)
+        image(sprites.menu.options, i * 213 + 50, 333, 31, 32, 175, 32, 31, 32); // selected act option
+    else if (i == 0)
+        image(sprites.menu.options, i * 213 + 50, 333, 31, 32, 175, 0, 31, 32); // unselected act option
+    
+    
+    if (this.menuSelection.category != 1 || i != 0)
+        image(sprites.menu.options, i * 213 + this.menuSelection.category*35 + 15, 333, 31, 32, this.menuSelection.category*35, 32, 31, 32); // selected option, other than act
+    
+    // I feel like these should probably be moved somewhere else, but I couldn't think of a better place for now
+    if (keys.pressed(keys.select)) {
+        turnPhase++;
+        if (i == 0 && this.menuSelection.category == 1)
+            this.menuSelection.category = 5;
+        keys.all[keys.select] = false;
+    }
+    else if (keys.pressed(keys.cancel)) {
+        if (turnPhase > 0)
+            turnPhase--;
+        keys.all[keys.cancel] = false;
+    }
+};
 
-    image(this.icons[0], i * 213 + 14, 336);
-    image(this.menuName, i * 213 + 51, 339);
+Member.prototype.drawIcon = function(i) {
+    if (this.current.hp <= 0)
+        image(this.icons[2], i * 213 + 14, 336-this.menuHeight); // down icon
+    else if (turnPhase > i && this.menuSelection.category != -1) {
+        noStroke();
+        fill(this.color);
+        rect(i * 213 + 14, 336-this.menuHeight, 22, 24);
+        image(sprites.menu.selected, i * 213 + 14, 336-this.menuHeight, 22, 24, this.menuSelection.category*22, 0, 22, 24);
+    }
+    else
+        image(this.icons[0], i * 213 + 14, 336-this.menuHeight); // default icon
+    
+    image(this.menuName, i * 213 + 51, 339-this.menuHeight);
+};
 
-    image(sprites.menu.hpBar, i * 213 + 110, 334);
+Member.prototype.drawHP = function(i) {
+    image(sprites.menu.hpBar, i * 213 + 110, 334-this.menuHeight);
     textFont(fonts.hp);
     textSize(6);
     textAlign(RIGHT);
@@ -76,15 +123,43 @@ Member.prototype.drawMenu = function (i) {
         fill(255, 255, 0);
     else
         fill(255);
-    text(this.current.hp, (i + 1) * 213 - 53, 344);
-    text(this.default.hp, (i + 1) * 213 - 8, 344);
+    text(this.current.hp, (i + 1) * 213 - 53, 344-this.menuHeight);
+    text(this.default.hp, (i + 1) * 213 - 8, 344-this.menuHeight);
     textAlign(LEFT);
     
     if (this.current.hp > 0) {
         // so that the hp bar doesn't go backwards when the character has negative hp
         fill(this.color);
-        rect(i * 213 + 128, 347, 76 * (this.current.hp / this.default.hp), 9);
+        rect(i * 213 + 128, 347-this.menuHeight, Math.ceil(76 * (this.current.hp / this.default.hp)), 9);
     }
-}
+};
+
+Member.prototype.drawMenu = function(i) {
+    if (turnPhase == i) {
+        this.menuHeight += (33-this.menuHeight)/2;
+        fill(0);
+        strokeWeight(2);
+        stroke(this.color);
+        rect(i * 214, 328, 214, 35);
+    }
+    else
+        this.menuHeight /= 2;
+    
+    noStroke();
+    fill(51, 32, 51);
+    rect(i * 214, 326, 216, 2);
+    rect(i * 213, 362, 216, 3);
+    fill(0);
+    if (turnPhase == i) {
+        this.options(i);
+        stroke(this.color);
+    }
+    rect(i * 214, 328-this.menuHeight, 214, 34);
+    noStroke();
+    
+    this.drawIcon(i);
+    this.drawHP(i);
+    
+};
 
 
