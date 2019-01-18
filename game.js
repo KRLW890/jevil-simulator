@@ -20,7 +20,9 @@ function draw() {
     var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
     for (var i = 0; i < 3; i++) {
         party[i].idle.play(xy[i].x, xy[i].y, true, 4);
-        party[i].drawMenu(i);
+    }
+    for (var i = 0; i < 3; i++) {
+        party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
     }
 
     tpBar.display();
