@@ -26,17 +26,19 @@ function draw() {
     }
 
     tpBar.display();
-/*
-    //for testing fonts:
-    textFont(fonts.main);
-    fill(255);
-    textSize(150);
-    printText("Hello,\n World", 100, 100, 10);
-    pointer += 0.1;
-*/
-    
-    if (true) // if it's not in the bullet hell phase
+    /*
+        //for testing fonts:
+        textFont(fonts.main);
+        fill(255);
+        textSize(150);
+        printText("Hello,\n World", 100, 100, 10);
+        pointer += 0.1;
+    */
+
+    if (true) {
+        // if it's not in the bullet hell phase
         handleKeys();
-};
+    }
+}
 
 
