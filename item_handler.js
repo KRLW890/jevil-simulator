@@ -45,7 +45,7 @@ var armors = [
     new Equippable("[empty]", "For masochists", Infinity, true, true, true, 0, 0, 0, 0),
     new Equippable("Pink Ribbon", "+TP range", 0, true, false, true, 0, 0, 0, 1),
     new Equippable("Amber Card", "+1 DF", Infinity, true, true, true, 0, 1, 0, 0),
-    new Equippable("Dice Brace", "+2 DF", 1, true, true, true, 0, 1, 0, 0),
+    new Equippable("Dice Brace", "+2 DF", 1, true, true, true, 0, 2, 0, 0),
     new Equippable("White Ribbon", "+2 DF", 1, true, false, true, 0, 2, 0, 0),
     new Equippable("Iron Shackle", "+2 DF, +1 AT", 1, true, true, true, 1, 2, 0, 0),
     new Equippable("Mouse Token", "+1 DF, +2 MG", 0, true, true, true, 0, 1, 2, 0),
