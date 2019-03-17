@@ -1,8 +1,6 @@
 var canvas, sprites, fonts;
 
-var party, tpBar;
-
-var turnPhase = 0, currentTurn = 0;
+var party, tpBar, animations;
 
 var keys = {
     all: [],
@@ -18,7 +16,7 @@ function keyPressed() {
 function keyReleased() {
     keys.all[keyCode] = false;
 };
-function handleKeys() { // so that key events only activate once per press, rather than every frame
+function handleKeys() {
     for (var i = 0; i < keys.all.length; i++)
         keys.all[i] = false;
 };
@@ -39,8 +37,7 @@ function loadSprites() {
             menuName: loadImage("images/kris-text.png"),
             icons: [
                 loadImage("images/kris-icon0.png"),
-                loadImage("images/kris-icon1.png"),
-                loadImage("images/kris-icon2.png")
+                loadImage("images/kris-icon1.png")
             ]
         },
         susie: {
@@ -57,8 +54,7 @@ function loadSprites() {
             menuName: loadImage("images/susie-text.png"),
             icons: [
                 loadImage("images/susie-icon0.png"),
-                loadImage("images/susie-icon1.png"),
-                loadImage("images/susie-icon2.png")
+                loadImage("images/susie-icon1.png")
             ]
         },
         ralsei: {
@@ -75,8 +71,7 @@ function loadSprites() {
             menuName: loadImage("images/ralsei-text.png"),
             icons: [
                 loadImage("images/ralsei-icon0.png"),
-                loadImage("images/ralsei-icon1.png"),
-                loadImage("images/ralsei-icon2.png")
+                loadImage("images/ralsei-icon1.png")
             ]
         },
         menu: {
@@ -84,7 +79,20 @@ function loadSprites() {
             options: loadImage("images/menu.png"),
             selected: loadImage("images/selections.png")
         },
-        tpBar: loadImage("images/tpBar.png")
+        tpBar: loadImage("images/tpBar.png"),
+        tpGraze: loadImage("images/tpgraze.png"),
+        soul: loadImage("images/playersoul.png"),
+        jevil: {
+            misc: loadImage("images/Jevil-misc.png")
+        },
+        bullets: {
+            bombClub: loadImage("images/bullets/bomb-club.png"),
+            bombDiamond: loadImage("images/bullets/bomb-diamond.png"),
+            bombHeart: loadImage("images/bullets/bomb-heart.png"),
+            bombSpade: loadImage("images/bullets/bomb-spade.png"),
+            heart: loadImage("images/bullets/bullet-heart.png"),
+            spade: loadImage("images/bullets/bullet-ace.png")
+        }
     };
 };
 
@@ -97,7 +105,7 @@ function loadFonts() {
 
 function initParty() {
     party = [
-        new Member("Kris", color(0, 255, 255), 90, 10, 2, 0, 4, 0, 0,
+        new Member("Kris", color(0, 255, 255), 90, 10, 2, 0, 4, 3, 2,
             new SpriteAnimation(sprites.kris.idle, 6), // idle
             new SpriteAnimation(sprites.kris.intro, 12), // intro
             new SpriteAnimation(sprites.kris.fight, 7), // fight
@@ -107,7 +115,7 @@ function initParty() {
             null, // mercy   TODO: add SpriteAnimation
             null, // defend  TODO: add SpriteAnimation
         ),
-        new Member("Susie", color(255, 0, 255), 110, 14, 2, 1, 5, 5, 0,
+        new Member("Susie", color(255, 0, 255), 110, 14, 2, 1, 5, 5, 2,
             new SpriteAnimation(sprites.susie.idle, 4), // idle
             null, // intro
             new SpriteAnimation("images/susie-attack.png", 6), // fight
@@ -117,7 +125,7 @@ function initParty() {
             new SpriteAnimation("images/susie-spare.png", 9), // mercy
             new SpriteAnimation("images/susie-defend.png", 6) // defend
         ),
-        new Member("Ralsei", color(0, 255, 0), 70, 8, 2, 7, 9, 0, 0,
+        new Member("Ralsei", color(0, 255, 0), 70, 8, 2, 7, 9, 4, 2,
             new SpriteAnimation(sprites.ralsei.idle, 5), // idle
             new SpriteAnimation(sprites.ralsei.intro, 9), // intro
             new SpriteAnimation(sprites.ralsei.fight, 6), // fight
@@ -134,6 +142,7 @@ function initParty() {
 function initTPBar() {
     tpBar = {
         percent: 0,
+        displayedPercent: 0,
         image: sprites.tpBar,
         display: function () {
             noStroke();
@@ -141,8 +150,25 @@ function initTPBar() {
             rect(42, 46, 19, 187);
             stroke(255);
             strokeWeight(2);
-            fill(255, 160, 64);
-            rect(40, (1 - (this.percent / 100)) * 189 + 46, 23, 188 - (1 - (this.percent / 100)) * 189);
+            if (this.percent == this.displayedPercent) {
+                fill(255, 160, 64);
+                rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
+            }
+            else if (this.percent > this.displayedPercent) {
+                fill(255);
+                rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
+                fill(255, 160, 64);
+                rect(40, (1 - (this.displayedPercent / 100)) * 190 + 45, 23, 189 - (1 - (this.displayedPercent / 100)) * 190);
+                this.displayedPercent += (this.percent - this.displayedPercent) / 4;
+            }
+            else {
+                fill(255, 0, 0);
+                rect(40, (1 - (this.displayedPercent / 100)) * 190 + 45, 23, 189 - (1 - (this.displayedPercent / 100)) * 190);
+                noStroke();
+                fill(255, 160, 64);
+                rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
+                this.displayedPercent += (this.percent - this.displayedPercent) / 4;
+            }
             noStroke();
 
             image(this.image, 9, 41);
@@ -164,9 +190,17 @@ function initTPBar() {
     };
 };
 
+function initAnimations() { // for miscellaneous animations
+    animations = {
+        playerSoul: new SpriteAnimation(sprites.soul, 2),
+        tpGraze: new SpriteAnimation(sprites.tpGraze, 4)
+    };
+};
+
 function initAll() {
     loadSprites();
     loadFonts();
     initParty();
     initTPBar();
+    initAnimations();
 };
