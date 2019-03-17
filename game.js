@@ -17,28 +17,32 @@ function setup() {
 
 function draw() {
     background(43, 51, 159);
+    
     var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
     for (var i = 0; i < 3; i++) {
-        party[i].idle.play(xy[i].x, xy[i].y, true, 4);
+        party[i].idle.play(xy[i].x, xy[i].y, true, 6);
     }
+    if (turnPhase == 11)
+        background(0);
+    textbox.display();
     for (var i = 0; i < 3; i++) {
         party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
     }
 
     tpBar.display();
-    /*
-        //for testing fonts:
-        textFont(fonts.main);
-        fill(255);
-        textSize(150);
-        printText("Hello,\n World", 100, 100, 10);
-        pointer += 0.1;
-    */
-
-    if (true) {
-        // if it's not in the bullet hell phase
+    processTurn();
+    
+/*
+    //for testing fonts:
+    textFont(fonts.main);
+    fill(255);
+    textSize(150);
+    printText("Hello,\n World", 100, 100, 10);
+    pointer += 0.1;
+*/
+    
+    if (turnPhase !== 11) // if it's not in the bullet hell phase
         handleKeys();
-    }
-}
+};
 
 
