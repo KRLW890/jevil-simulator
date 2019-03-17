@@ -20,11 +20,11 @@ SpriteAnimation.prototype.play = function (x, y, loop, framerate, w, h) {
             h = this.spritesheet.height;
         } else {
             h = w * this.spritesheet.height;
-            w = w * this.spritesheet.width;
+            w = w * this.spritesheet.width/this.frames;
         }
     } else {
         h = h * this.spritesheet.height;
-        w = w * this.spritesheet.width;
+        w = w * this.spritesheet.width/this.frames;
     }
 
     if (this.playing === false) {
