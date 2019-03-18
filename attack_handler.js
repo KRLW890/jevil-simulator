@@ -50,8 +50,12 @@ var executeAttack = function() {
     attacks[attackData.id].spawnBullets();
     
     attackData.collision = false; // for debugging
-    for (var i = 0; i < attackData.bullets.length; i++)
-        attackData.bullets[i].move();
+    for (var i = 0; i < attackData.bullets.length; i++) {
+        if (attackData.bullets[i] != null) {
+            if (attackData.bullets[i].move() === true) // if the function returns true, delete it from the array
+                attackData.bullets[i] = null;
+        }
+    }
     
     attackData.duration--;
     if (attackData.duration <= 0)
