@@ -87,6 +87,11 @@ HeartBomb.prototype.move = function() {
     
     this.x += this.xSpeed;
     this.y += this.ySpeed;
+    
+    if (this.x < -50 || this.x > 690 || this.y < -50 || this.y > 530)
+        return true; // when one of these functions return true, the program cleans up that spot in the bullet array
+    else
+        return false;
 };
 
 
