@@ -24,82 +24,82 @@ function handleKeys() {
 function loadSprites() {
     sprites = {
         kris: {
-            idle: loadImage("images/kris-idle.png"),
-            intro: loadImage("images/kris-intro.png"),
-            fight: loadImage("images/kris-attack.png"),
-            magic: loadImage("images/kris-pirouette.png"),
-            act: loadImage("images/kris-act.png"),
+            idle: loadImage("/src/sprites/kris-idle.png"),
+            intro: loadImage("/src/sprites/kris-intro.png"),
+            fight: loadImage("/src/sprites/kris-attack.png"),
+            magic: loadImage("/src/sprites/kris-pirouette.png"),
+            act: loadImage("/src/sprites/kris-act.png"),
             mercy: null, // TODO: Add spritesheet
-            item: loadImage("images/kris-item.png"),
+            item: loadImage("/src/sprites/kris-item.png"),
             defend: null, // TODO: Add spritesheet
-            damage: loadImage("images/kris-damage.png"),
-            down: loadImage("images/kris-down.png"),
-            menuName: loadImage("images/kris-text.png"),
+            damage: loadImage("/src/sprites/kris-damage.png"),
+            down: loadImage("/src/sprites/kris-down.png"),
+            menuName: loadImage("/src/sprites/kris-text.png"),
             icons: [
-                loadImage("images/kris-icon0.png"),
-                loadImage("images/kris-icon1.png")
+                loadImage("/src/sprites/kris-icon0.png"),
+                loadImage("/src/sprites/kris-icon1.png")
             ]
         },
         susie: {
-            idle: loadImage("images/susie-idle.png"),
+            idle: loadImage("/src/sprites/susie-idle.png"),
             intro: null, // TODO: Add spritesheet
-            fight: loadImage("images/susie-attack.png"),
+            fight: loadImage("/src/sprites/susie-attack.png"),
             magic: null, // TODO: Add spritesheet
             act: null, // TODO: Add spritesheet
-            item: loadImage("images/susie-item.png"),
-            mercy: loadImage("images/susie-spare.png"),
-            defend: loadImage("images/susie-defend.png"),
-            damage: loadImage("images/susie-damage.png"),
-            down: loadImage("images/susie-down.png"),
-            menuName: loadImage("images/susie-text.png"),
+            item: loadImage("/src/sprites/susie-item.png"),
+            mercy: loadImage("/src/sprites/susie-spare.png"),
+            defend: loadImage("/src/sprites/susie-defend.png"),
+            damage: loadImage("/src/sprites/susie-damage.png"),
+            down: loadImage("/src/sprites/susie-down.png"),
+            menuName: loadImage("/src/sprites/susie-text.png"),
             icons: [
-                loadImage("images/susie-icon0.png"),
-                loadImage("images/susie-icon1.png")
+                loadImage("/src/sprites/susie-icon0.png"),
+                loadImage("/src/sprites/susie-icon1.png")
             ]
         },
         ralsei: {
-            idle: loadImage("images/ralsei-idle.png"),
-            intro: loadImage("images/ralsei-intro.png"),
-            fight: loadImage("images/ralsei-attack.png"),
-            magic: loadImage("images/ralsei-spell.png"),
+            idle: loadImage("/src/sprites/ralsei-idle.png"),
+            intro: loadImage("/src/sprites/ralsei-intro.png"),
+            fight: loadImage("/src/sprites/ralsei-attack.png"),
+            magic: loadImage("/src/sprites/ralsei-spell.png"),
             act: null, // TODO: Add spritesheet
-            item: loadImage("images/ralsei-item.png"),
+            item: loadImage("/src/sprites/ralsei-item.png"),
             mercy: this.magic,
-            defend: loadImage("images/ralsei-defend.png"),
-            damage: loadImage("images/ralsei-damage.png"),
-            down: loadImage("images/ralsei-down.png"),
-            menuName: loadImage("images/ralsei-text.png"),
+            defend: loadImage("/src/sprites/ralsei-defend.png"),
+            damage: loadImage("/src/sprites/ralsei-damage.png"),
+            down: loadImage("/src/sprites/ralsei-down.png"),
+            menuName: loadImage("/src/sprites/ralsei-text.png"),
             icons: [
-                loadImage("images/ralsei-icon0.png"),
-                loadImage("images/ralsei-icon1.png")
+                loadImage("/src/sprites/ralsei-icon0.png"),
+                loadImage("/src/sprites/ralsei-icon1.png")
             ]
         },
         menu: {
-            hpBar: loadImage("images/hpbar.png"),
-            options: loadImage("images/menu.png"),
-            selected: loadImage("images/selections.png")
+            hpBar: loadImage("/src/sprites/hpbar.png"),
+            options: loadImage("/src/sprites/menu.png"),
+            selected: loadImage("/src/sprites/selections.png")
         },
-        tpBar: loadImage("images/tpBar.png"),
-        tpGraze: loadImage("images/tpgraze.png"),
-        soul: loadImage("images/playersoul.png"),
+        tpBar: loadImage("/src/sprites/tpBar.png"),
+        tpGraze: loadImage("/src/sprites/tpgraze.png"),
+        soul: loadImage("/src/sprites/playersoul.png"),
         jevil: {
-            misc: loadImage("images/Jevil-misc.png")
+            misc: loadImage("/src/sprites/Jevil-misc.png")
         },
         bullets: {
-            bombClub: loadImage("images/bullets/bomb-club.png"),
-            bombDiamond: loadImage("images/bullets/bomb-diamond.png"),
-            bombHeart: loadImage("images/bullets/bomb-heart.png"),
-            bombSpade: loadImage("images/bullets/bomb-spade.png"),
-            heart: loadImage("images/bullets/bullet-heart.png"),
-            spade: loadImage("images/bullets/bullet-ace.png")
+            bombClub: loadImage("/src/sprites/bullets/bomb-club.png"),
+            bombDiamond: loadImage("/src/sprites/bullets/bomb-diamond.png"),
+            bombHeart: loadImage("/src/sprites/bullets/bomb-heart.png"),
+            bombSpade: loadImage("/src/sprites/bullets/bomb-spade.png"),
+            heart: loadImage("/src/sprites/bullets/bullet-heart.png"),
+            spade: loadImage("/src/sprites/bullets/bullet-ace.png")
         }
     };
 };
 
 function loadFonts() {
     fonts = {
-        main: loadFont("fonts/8bitoperator_jve.ttf"),
-        hp: loadFont("fonts/hpfont.ttf")
+        main: loadFont("/src/fonts/8bitoperator_jve.ttf"),
+        hp: loadFont("/src/fonts/hpfont.ttf")
     };
 };
 
