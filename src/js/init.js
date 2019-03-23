@@ -98,8 +98,8 @@ function loadSprites() {
 
 function loadFonts() {
     fonts = {
-        main: loadFont("./src/fonts/8bitoperator_jve.ttf"),
-        hp: loadFont("./src/fonts/hpfont.ttf")
+        main: loadFont("fonts/8bitoperator_jve.ttf"),
+        hp: loadFont("fonts/hpfont.ttf")
     };
 };
 
