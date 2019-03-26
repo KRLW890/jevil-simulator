@@ -24,82 +24,82 @@ function handleKeys() {
 function loadSprites() {
     sprites = {
         kris: {
-            idle: loadImage("/src/sprites/kris-idle.png"),
-            intro: loadImage("/src/sprites/kris-intro.png"),
-            fight: loadImage("/src/sprites/kris-attack.png"),
-            magic: loadImage("/src/sprites/kris-pirouette.png"),
-            act: loadImage("/src/sprites/kris-act.png"),
+            idle: loadImage("/jevil-simulator/src/sprites/kris-idle.png"),
+            intro: loadImage("/jevil-simulator/src/sprites/kris-intro.png"),
+            fight: loadImage("/jevil-simulator/src/sprites/kris-attack.png"),
+            magic: loadImage("/jevil-simulator/src/sprites/kris-pirouette.png"),
+            act: loadImage("/jevil-simulator/src/sprites/kris-act.png"),
             mercy: null, // TODO: Add spritesheet
-            item: loadImage("/src/sprites/kris-item.png"),
+            item: loadImage("/jevil-simulator/src/sprites/kris-item.png"),
             defend: null, // TODO: Add spritesheet
-            damage: loadImage("/src/sprites/kris-damage.png"),
-            down: loadImage("/src/sprites/kris-down.png"),
-            menuName: loadImage("/src/sprites/kris-text.png"),
+            damage: loadImage("/jevil-simulator/src/sprites/kris-damage.png"),
+            down: loadImage("/jevil-simulator/src/sprites/kris-down.png"),
+            menuName: loadImage("/jevil-simulator/src/sprites/kris-text.png"),
             icons: [
-                loadImage("/src/sprites/kris-icon0.png"),
-                loadImage("/src/sprites/kris-icon1.png")
+                loadImage("/jevil-simulator/src/sprites/kris-icon0.png"),
+                loadImage("/jevil-simulator/src/sprites/kris-icon1.png")
             ]
         },
         susie: {
-            idle: loadImage("/src/sprites/susie-idle.png"),
+            idle: loadImage("/jevil-simulator/src/sprites/susie-idle.png"),
             intro: null, // TODO: Add spritesheet
-            fight: loadImage("/src/sprites/susie-attack.png"),
+            fight: loadImage("/jevil-simulator/src/sprites/susie-attack.png"),
             magic: null, // TODO: Add spritesheet
             act: null, // TODO: Add spritesheet
-            item: loadImage("/src/sprites/susie-item.png"),
-            mercy: loadImage("/src/sprites/susie-spare.png"),
-            defend: loadImage("/src/sprites/susie-defend.png"),
-            damage: loadImage("/src/sprites/susie-damage.png"),
-            down: loadImage("/src/sprites/susie-down.png"),
-            menuName: loadImage("/src/sprites/susie-text.png"),
+            item: loadImage("/jevil-simulator/src/sprites/susie-item.png"),
+            mercy: loadImage("/jevil-simulator/src/sprites/susie-spare.png"),
+            defend: loadImage("/jevil-simulator/src/sprites/susie-defend.png"),
+            damage: loadImage("/jevil-simulator/src/sprites/susie-damage.png"),
+            down: loadImage("/jevil-simulator/src/sprites/susie-down.png"),
+            menuName: loadImage("/jevil-simulator/src/sprites/susie-text.png"),
             icons: [
-                loadImage("/src/sprites/susie-icon0.png"),
-                loadImage("/src/sprites/susie-icon1.png")
+                loadImage("/jevil-simulator/src/sprites/susie-icon0.png"),
+                loadImage("/jevil-simulator/src/sprites/susie-icon1.png")
             ]
         },
         ralsei: {
-            idle: loadImage("/src/sprites/ralsei-idle.png"),
-            intro: loadImage("/src/sprites/ralsei-intro.png"),
-            fight: loadImage("/src/sprites/ralsei-attack.png"),
-            magic: loadImage("/src/sprites/ralsei-spell.png"),
+            idle: loadImage("/jevil-simulator/src/sprites/ralsei-idle.png"),
+            intro: loadImage("/jevil-simulator/src/sprites/ralsei-intro.png"),
+            fight: loadImage("/jevil-simulator/src/sprites/ralsei-attack.png"),
+            magic: loadImage("/jevil-simulator/src/sprites/ralsei-spell.png"),
             act: null, // TODO: Add spritesheet
-            item: loadImage("/src/sprites/ralsei-item.png"),
+            item: loadImage("/jevil-simulator/src/sprites/ralsei-item.png"),
             mercy: this.magic,
-            defend: loadImage("/src/sprites/ralsei-defend.png"),
-            damage: loadImage("/src/sprites/ralsei-damage.png"),
-            down: loadImage("/src/sprites/ralsei-down.png"),
-            menuName: loadImage("/src/sprites/ralsei-text.png"),
+            defend: loadImage("/jevil-simulator/src/sprites/ralsei-defend.png"),
+            damage: loadImage("/jevil-simulator/src/sprites/ralsei-damage.png"),
+            down: loadImage("/jevil-simulator/src/sprites/ralsei-down.png"),
+            menuName: loadImage("/jevil-simulator/src/sprites/ralsei-text.png"),
             icons: [
-                loadImage("/src/sprites/ralsei-icon0.png"),
-                loadImage("/src/sprites/ralsei-icon1.png")
+                loadImage("/jevil-simulator/src/sprites/ralsei-icon0.png"),
+                loadImage("/jevil-simulator/src/sprites/ralsei-icon1.png")
             ]
         },
         menu: {
-            hpBar: loadImage("/src/sprites/hpbar.png"),
-            options: loadImage("/src/sprites/menu.png"),
-            selected: loadImage("/src/sprites/selections.png")
+            hpBar: loadImage("/jevil-simulator/src/sprites/hpbar.png"),
+            options: loadImage("/jevil-simulator/src/sprites/menu.png"),
+            selected: loadImage("/jevil-simulator/src/sprites/selections.png")
         },
-        tpBar: loadImage("/src/sprites/tpBar.png"),
-        tpGraze: loadImage("/src/sprites/tpgraze.png"),
-        soul: loadImage("/src/sprites/playersoul.png"),
+        tpBar: loadImage("/jevil-simulator/src/sprites/tpBar.png"),
+        tpGraze: loadImage("/jevil-simulator/src/sprites/tpgraze.png"),
+        soul: loadImage("/jevil-simulator/src/sprites/playersoul.png"),
         jevil: {
-            misc: loadImage("/src/sprites/Jevil-misc.png")
+            misc: loadImage("/jevil-simulator/src/sprites/Jevil-misc.png")
         },
         bullets: {
-            bombClub: loadImage("/src/sprites/bullets/bomb-club.png"),
-            bombDiamond: loadImage("/src/sprites/bullets/bomb-diamond.png"),
-            bombHeart: loadImage("/src/sprites/bullets/bomb-heart.png"),
-            bombSpade: loadImage("/src/sprites/bullets/bomb-spade.png"),
-            heart: loadImage("/src/sprites/bullets/bullet-heart.png"),
-            spade: loadImage("/src/sprites/bullets/bullet-ace.png")
+            bombClub: loadImage("/jevil-simulator/src/sprites/bullets/bomb-club.png"),
+            bombDiamond: loadImage("/jevil-simulator/src/sprites/bullets/bomb-diamond.png"),
+            bombHeart: loadImage("/jevil-simulator/src/sprites/bullets/bomb-heart.png"),
+            bombSpade: loadImage("/jevil-simulator/src/sprites/bullets/bomb-spade.png"),
+            heart: loadImage("/jevil-simulator/src/sprites/bullets/bullet-heart.png"),
+            spade: loadImage("/jevil-simulator/src/sprites/bullets/bullet-ace.png")
         }
     };
 };
 
 function loadFonts() {
     fonts = {
-        main: loadFont("/src/fonts/8bitoperator_jve.ttf"),
-        hp: loadFont("/src/fonts/hpfont.ttf")
+        main: loadFont("/jevil-simulator/src/fonts/8bitoperator_jve.ttf"),
+        hp: loadFont("/jevil-simulator/src/fonts/hpfont.ttf")
     };
 };
 
