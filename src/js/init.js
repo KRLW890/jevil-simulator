@@ -24,9 +24,9 @@ function handleKeys() {
 function loadSprites() {
     sprites = {
         kris: {
-            idle: loadImage("/src/sprites/kris-idle.png"),
-            intro: loadImage("/src/sprites/kris-intro.png"),
-            fight: loadImage("/src/sprites/kris-attack.png"),
+            idle: loadImage("src/sprites/kris-idle.png"),
+            intro: loadImage("jevil-simulator/src/sprites/kris-intro.png"),
+            fight: loadImage("/jevil-simulator/src/sprites/kris-attack.png"),
             magic: loadImage("/src/sprites/kris-pirouette.png"),
             act: loadImage("/src/sprites/kris-act.png"),
             mercy: null, // TODO: Add spritesheet
