@@ -20,6 +20,5 @@ p {
     font-family: Determination Sans;
     font-size: 300%;
     color: white;
-    font-smooth: never;
     -webkit-font-smoothing : none;
 }
