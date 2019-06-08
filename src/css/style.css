@@ -1,6 +1,6 @@
 @font-face {
     font-family: Determination Sans;
-    src: url('src/fonts/DTM-Sans.otf');
+    src: url('../fonts/DTM-Sans.otf');
     font-weight: Medium;
     font-style: normal;
 }
