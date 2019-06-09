@@ -1,24 +1,32 @@
-var Item = function (name, desc, limit) {
-    this.name = name;
-    this.desc = desc;
-    this.limit = limit;
-    this.remaining = limit;
-};
+class Item {
+    constructor(name, desc, limit) {
+        this.name = name;
+        this.desc = desc;
+        this.limit = limit;
+        this.remaining = limit;
+    }
+}
 
-var Consumable = function (name, desc, limit, fullParty, affect) {
-    Item.call(this, name, desc, limit);
-    this.fullParty = fullParty; // does the item affect the whole party?
-    this.affect = affect || function () { };
-};
+class Consumable extends Item {
+    constructor (name, desc, limit, fullParty, effect) {
+        super(name, desc, limit);
 
-var Equippable = function (name, desc, limit, kris, susie, ralsei, atk, def, mgc, tp) {
-    Item.call(this, name, desc, limit);
-    this.equipTo = [kris, susie, ralsei];
-    this.atk = atk;
-    this.def = def;
-    this.mgc = mgc;
-    this.tp = tp;
-};
+        this.fullParty = fullParty; // does the item affect the whole party?
+        this.effect = effect || function () { };
+    }
+}
+
+class Equippable extends Item {
+    constructor (name, desc, limit, kris, susie, ralsei, atk, def, mgc, tp) {
+        super(name, desc, limit);
+
+        this.equipTo = [kris, susie, ralsei];
+        this.atk = atk;
+        this.def = def;
+        this.mgc = mgc;
+        this.tp = tp;
+    }
+}
 
 
 var consumables = [
@@ -67,5 +75,3 @@ var weapons = [
 
 
 var inventory = [4, 6, 8, 8, 8, 8, 8, 8, 8, 14, 2, 2];
-
-
