@@ -1,0 +1,17 @@
+{
+  "name": "jevil-simulator",
+  "version": "0.0.1",
+  "description": "A simulator for the Jevil fight from Deltarune",
+  "main": "src/game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KRLW890/jevil-simulator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KRLW890/jevil-simulator/issues"
+  },
+  "homepage": "https://github.com/KRLW890/jevil-simulator#readme"
+}
