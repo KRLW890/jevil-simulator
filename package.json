@@ -13,5 +13,8 @@
   "bugs": {
     "url": "https://github.com/KRLW890/jevil-simulator/issues"
   },
-  "homepage": "https://github.com/KRLW890/jevil-simulator#readme"
+  "homepage": "https://github.com/KRLW890/jevil-simulator#readme",
+  "dependencies": {
+    "eslint": "^6.6.0"
+  }
 }
