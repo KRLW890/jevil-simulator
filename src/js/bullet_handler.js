@@ -107,3 +107,8 @@ class HeartBomb extends Bullet {
 		}
 	}
 }
+
+export { HeartBomb };
+
+//TODO: remove `window` references
+window.HeartBomb = HeartBomb;
