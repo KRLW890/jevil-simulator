@@ -1,27 +1,17 @@
 const temporaryGlobals = {
 	"animations": "writable",
-	"armors": "writable",
-	"attackData": "writable",
-	"attacks": "writable",
 	"canvas": "writable",
-	"executeAttack": "writable",
 	"fonts": "writable",
 	"handleKeys": "writable",
-	"HeartBomb": "writable",
 	"initAll": "writable",
 	"keys": "writable",
-	"Member": "writable",
 	"p5": "readonly",
 	"party": "writable",
 	"pointer": "writable",
 	"printText": "writable",
-	"processTurn": "writable",
-	"SpriteAnimation": "writable",
 	"sprites": "writable",
-	"textbox": "writable",
 	"tpBar": "writable",
 	"turnPhase": "writable",
-	"weapons": "writable",
 };
 
 module.exports = {
