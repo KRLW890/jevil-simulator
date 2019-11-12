@@ -16,6 +16,8 @@ spare animations - no animation until the turn is active. kris uses act animatio
 defend animation - full animation immediately upon selection
 */
 
+import { armors, weapons } from "./item_handler.js";
+
 class Member {
 	constructor(
 		name, color,
