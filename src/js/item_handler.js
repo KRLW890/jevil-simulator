@@ -77,3 +77,16 @@ var weapons = [
 
 
 var inventory = [4, 6, 8, 8, 8, 8, 8, 8, 8, 14, 2, 2];
+
+export {
+	consumables,
+	armors,
+	weapons,
+	inventory
+};
+
+//TODO: remove `window` references
+window.consumables = consumables;
+window.armors = armors;
+window.weapons = weapons;
+window.inventory = inventory;
