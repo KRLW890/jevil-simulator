@@ -82,7 +82,7 @@ class HeartBomb extends Bullet {
 				if (this.bullets[i]) {
 					var bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
 					var bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
-					image(sprites.bullets.heart, bulletX-9, bulletY-9);
+					p5.instance.image(sprites.bullets.heart, bulletX-9, bulletY-9);
 					if (dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
 						if (attackData.iFrames == 0) {
 							this.hit();

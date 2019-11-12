@@ -20,19 +20,19 @@ var textbox = {
 	text: "* LET THE GAMES BEGIN!",
 	pointer: 0,
 	display: function() {
-		fill(0);
-		noStroke();
-		rect(0, 326, 640, 154);
+		p5.instance.fill(0);
+		p5.instance.noStroke();
+		p5.instance.rect(0, 326, 640, 154);
 
 		pointer = textbox.pointer;
-		fill(255);
+		p5.instance.fill(255);
 		printText(textbox.text, 35, 394);
 		textbox.pointer++;
 	}
 };
 
 var processTurn = function() {
-	text(turnPhase, 610, 25); // for debugging purposes
+	p5.instance.text(turnPhase, 610, 25); // for debugging purposes
 
 	switch (turnPhase) {
 	case 2:

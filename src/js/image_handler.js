@@ -34,7 +34,7 @@ class SpriteAnimation {
 			this.playing = true;
 		}
 
-		image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		p5.instance.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 
 		if (loop || this.frameCount < this.frames - 1) {
 			this.frameCount++;
@@ -59,6 +59,6 @@ class SpriteAnimation {
 			w = w * this.spritesheet.width;
 		}
 
-		image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		p5.instance.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 	}
 }

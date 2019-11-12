@@ -14,10 +14,10 @@ var attackData = {
 };
 
 var executeAttack = function() {
-	stroke(0, 192, 0);
-	fill(0);
-	strokeWeight(4);
-	rect(248, 98, 146, 146); // battle box
+	p5.instance.stroke(0, 192, 0);
+	p5.instance.fill(0);
+	p5.instance.strokeWeight(4);
+	p5.instance.rect(248, 98, 146, 146); // battle box
 
 	if (keys.pressed(keys.up) && attackData.playerY > 108) {
 		attackData.playerY -= 4;
