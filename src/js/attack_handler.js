@@ -126,3 +126,10 @@ attacks[2].spawnBullets = function() {
 		addBullet(new HeartBomb());
 	}
 };
+
+export { attacks, executeAttack };
+
+//TODO: remove `window` references
+window.attackData = attackData;
+window.executeAttack = executeAttack;
+window.attacks = attacks;
