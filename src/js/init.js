@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { Member } from "./party_handler.js";
+import { SpriteAnimation } from "./image_handler.js";
 
 var canvas, sprites, fonts;
 

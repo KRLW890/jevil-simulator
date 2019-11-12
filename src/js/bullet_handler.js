@@ -2,6 +2,8 @@
 
 // This file stores all the bullet types, which can be called by attacks
 
+import { SpriteAnimation } from "./image_handler.js";
+
 var dist = function(x1, y1, x2, y2) {
 	return Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2));
 };

@@ -64,6 +64,3 @@ class SpriteAnimation {
 }
 
 export { SpriteAnimation };
-
-//TODO: remove `window` references
-window.SpriteAnimation = SpriteAnimation;
