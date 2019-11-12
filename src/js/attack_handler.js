@@ -129,9 +129,4 @@ attacks[2].spawnBullets = function() {
 	}
 };
 
-export { attacks, executeAttack };
-
-//TODO: remove `window` references
-window.attackData = attackData;
-window.executeAttack = executeAttack;
-window.attacks = attacks;
+export { attackData, attacks, executeAttack };

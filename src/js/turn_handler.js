@@ -15,6 +15,8 @@ turnPhase values (not necessarily final):
 13: turn reset (single frame)
 */
 
+import { attacks, attackData, executeAttack } from "./attack_handler.js";
+
 var textbox = {
 	text: "* LET THE GAMES BEGIN!",
 	pointer: 0,
