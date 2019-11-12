@@ -14,7 +14,7 @@ turnPhase values (not necessarily final):
 12: Jevil's attack
 13: turn reset (single frame)
 */
-var turnPhase = 0, currentTurn = 0;
+
 
 var textbox = {
 	text: "* LET THE GAMES BEGIN!",
@@ -111,3 +111,11 @@ var processTurn = function() {
 		break;
 	}
 };
+
+export { textbox, processTurn };
+
+//TODO: remove `window` references
+window.turnPhase = 0;
+window.currentTurn = 0;
+window.textbox = textbox;
+window.processTurn = processTurn;
