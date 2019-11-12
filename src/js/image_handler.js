@@ -62,3 +62,8 @@ class SpriteAnimation {
 		p5.instance.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 	}
 }
+
+export { SpriteAnimation };
+
+//TODO: remove `window` references
+window.SpriteAnimation = SpriteAnimation;
