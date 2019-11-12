@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+import { Member } from "./party_handler.js";
+
 var canvas, sprites, fonts;
 
 var party, tpBar, animations;

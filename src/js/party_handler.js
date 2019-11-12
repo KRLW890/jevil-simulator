@@ -192,6 +192,3 @@ class Member {
 }
 
 export { Member };
-
-//TODO: remove `window` references
-window.Member = Member;
