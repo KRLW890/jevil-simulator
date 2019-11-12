@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+import { HeartBomb } from "./bullet_handler.js";
+
 var attackData = {
 	id: 2, // determines which attack to use this turn
 	baseDamage: 40,
