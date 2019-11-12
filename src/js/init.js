@@ -19,8 +19,9 @@ function keyReleased() {
 	keys.all[keyCode] = false;
 }
 function handleKeys() {
-	for (var i = 0; i < keys.all.length; i++)
+	for (var i = 0; i < keys.all.length; i++) {
 		keys.all[i] = false;
+	}
 }
 
 function loadSprites() {
@@ -155,15 +156,13 @@ function initTPBar() {
 			if (this.percent == this.displayedPercent) {
 				fill(255, 160, 64);
 				rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
-			}
-			else if (this.percent > this.displayedPercent) {
+			} else if (this.percent > this.displayedPercent) {
 				fill(255);
 				rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
 				fill(255, 160, 64);
 				rect(40, (1 - (this.displayedPercent / 100)) * 190 + 45, 23, 189 - (1 - (this.displayedPercent / 100)) * 190);
 				this.displayedPercent += (this.percent - this.displayedPercent) / 4;
-			}
-			else {
+			} else {
 				fill(255, 0, 0);
 				rect(40, (1 - (this.displayedPercent / 100)) * 190 + 45, 23, 189 - (1 - (this.displayedPercent / 100)) * 190);
 				noStroke();
@@ -181,8 +180,7 @@ function initTPBar() {
 				fill(255);
 				text(this.percent + "", 9, 135);
 				text("%", 14, 160);
-			}
-			else {
+			} else {
 				fill(255, 255, 0);
 				text("M", 9, 135);
 				text("A", 14, 155);

@@ -21,47 +21,53 @@ var executeAttack = function() {
 
 	if (keys.pressed(keys.up) && attackData.playerY > 108) {
 		attackData.playerY -= 4;
-		if (attackData.playerY < 108)
+		if (attackData.playerY < 108) {
 			attackData.playerY = 108;
-	}
-	else if (keys.pressed(keys.down) && attackData.playerY < 234) {
+		}
+	} else if (keys.pressed(keys.down) && attackData.playerY < 234) {
 		attackData.playerY += 4;
-		if (attackData.playerY > 234)
+		if (attackData.playerY > 234) {
 			attackData.playerY = 234;
+		}
 	}
 	if (keys.pressed(keys.left) && attackData.playerX > 258) {
 		attackData.playerX -= 4;
-		if (attackData.playerX < 258)
+		if (attackData.playerX < 258) {
 			attackData.playerX = 258;
-	}
-	else if (keys.pressed(keys.right) && attackData.playerX < 384) {
+		}
+	} else if (keys.pressed(keys.right) && attackData.playerX < 384) {
 		attackData.playerX += 4;
-		if (attackData.playerX > 384)
+		if (attackData.playerX > 384) {
 			attackData.playerX = 384;
+		}
 	}
 
-	if (attackData.collision) // for debugging
+	// for debugging
+	if (attackData.collision) {
 		animations.playerSoul.drawFrame(attackData.playerX-8, attackData.playerY-8, 1);
-	else if (attackData.iFrames > 0) {
+	} else if (attackData.iFrames > 0) {
 		animations.playerSoul.play(attackData.playerX-8, attackData.playerY-8, true, 6);
 		attackData.iFrames--;
-	}
-	else
+	} else {
 		animations.playerSoul.drawFrame(attackData.playerX-8, attackData.playerY-8, 0);
+	}
 
 	attacks[attackData.id].spawnBullets();
 
 	attackData.collision = false; // for debugging
 	for (var i = 0; i < attackData.bullets.length; i++) {
 		if (attackData.bullets[i] != null) {
-			if (attackData.bullets[i].move() === true) // if the function returns true, delete it from the array
+			// if the function returns true, delete it from the array
+			if (attackData.bullets[i].move() === true) {
 				attackData.bullets[i] = null;
+			}
 		}
 	}
 
 	attackData.duration--;
-	if (attackData.duration <= 0)
+	if (attackData.duration <= 0) {
 		turnPhase++;
+	}
 };
 
 
@@ -76,10 +82,11 @@ class Attack {
 	prepareAttack() {
 		attackData.baseDamage = this.baseDamage;
 		attackData.duration = this.duration;
-		if (this.isMultiTarget)
+		if (this.isMultiTarget) {
 			attackData.target = 3;
-		else
+		} else {
 			attackData.target = Math.floor(Math.random()*3);
+		}
 
 		attackData.playerX = 320;
 		attackData.playerY = 175;
@@ -88,8 +95,9 @@ class Attack {
 
 var addBullet = function(bullet) { // should be called as addBullet(new BulletType());
 	var i = 0;
-	while (attackData.bullets[i] != null)
+	while (attackData.bullets[i] != null) {
 		i++;
+	}
 
 	attackData.bullets[i] = bullet;
 };
@@ -114,6 +122,7 @@ var attacks = [
 ];
 
 attacks[2].spawnBullets = function() {
-	if (attackData.duration % 25 == 0)
+	if (attackData.duration % 25 == 0) {
 		addBullet(new HeartBomb());
+	}
 };

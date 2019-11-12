@@ -38,10 +38,11 @@ var processTurn = function() {
 	case 2:
 	case 4:
 		if (keys.pressed(keys.cancel)) {
-			if (party[Math.floor((turnPhase-2)/2)].current.hp > 0)
+			if (party[Math.floor((turnPhase-2)/2)].current.hp > 0) {
 				turnPhase -= 2;
-			else if (party[0].current.hp > 0)
+			} else if (party[0].current.hp > 0) {
 				turnPhase -= 4;
+			}
 		}
 		//fallthrough
 	case 0:
@@ -51,8 +52,9 @@ var processTurn = function() {
 		}
 		if (keys.pressed(keys.select)) {
 			turnPhase++;
-			while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0)
+			while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0) {
 				turnPhase += 2;
+			}
 		}
 		break;
 
@@ -69,8 +71,7 @@ var processTurn = function() {
 			do {
 				turnPhase++;
 			} while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0);
-		}
-		else if (keys.pressed(keys.cancel)) {
+		} else if (keys.pressed(keys.cancel)) {
 			turnPhase--;
 		}
 		break;
@@ -97,13 +98,16 @@ var processTurn = function() {
 		attackData.iFrames = 0;
 		for (var i = 2; i >= 0; i--) {
 			party[i].menuSelection = { category: 0, suboption: 0 };
-			if (party[i].current.hp <= 0)
+			if (party[i].current.hp <= 0) {
 				party[i].current.hp += Math.floor(party[i].current.maxHp/7.5);
-			if (party[i].current.hp > 0)
+			}
+			if (party[i].current.hp > 0) {
 				turnPhase = i*2;
+			}
 		}
-		if (turnPhase == 12)
+		if (turnPhase == 12) {
 			turnPhase = 6;
+		}
 		break;
 	}
 };

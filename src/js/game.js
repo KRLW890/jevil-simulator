@@ -27,8 +27,9 @@ function draw() {
 	for (i = 0; i < 3; i++) {
 		party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 	}
-	if (turnPhase == 11)
+	if (turnPhase == 11) {
 		background(0);
+	}
 	textbox.display();
 	for (i = 0; i < 3; i++) {
 		party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
@@ -46,8 +47,10 @@ function draw() {
     pointer += 0.1;
 */
 
-	if (turnPhase !== 11) // if it's not in the bullet hell phase
+	// if it's not in the bullet hell phase
+	if (turnPhase !== 11) {
 		handleKeys();
+	}
 }
 
 //TODO: remove `window` references

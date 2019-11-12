@@ -61,9 +61,19 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"rules": {
+		"brace-style": [
+			"error",
+			"1tbs"
+		],
+		"curly": [
+			"error"
+		],
 		"indent": [
 			"error",
 			"tab"
+		],
+		"keyword-spacing": [
+			"error"
 		],
 		"linebreak-style": [
 			"error",
