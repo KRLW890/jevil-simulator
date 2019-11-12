@@ -25,7 +25,7 @@ function handleKeys() {
 }
 
 function loadSprites() {
-	sprites = {
+	window.sprites = {
 		kris: {
 			idle: p5.instance.loadImage("src/sprites/kris-idle.png"),
 			intro: p5.instance.loadImage("src/sprites/kris-intro.png"),
@@ -67,7 +67,8 @@ function loadSprites() {
 			magic: p5.instance.loadImage("src/sprites/ralsei-spell.png"),
 			act: null, // TODO: Add spritesheet
 			item: p5.instance.loadImage("src/sprites/ralsei-item.png"),
-			mercy: this.magic,
+			//Same as magic
+			mercy: p5.instance.loadImage("src/sprites/ralsei-spell.png"),
 			defend: p5.instance.loadImage("src/sprites/ralsei-defend.png"),
 			damage: p5.instance.loadImage("src/sprites/ralsei-damage.png"),
 			down: p5.instance.loadImage("src/sprites/ralsei-down.png"),
@@ -100,14 +101,16 @@ function loadSprites() {
 }
 
 function loadFonts() {
-	fonts = {
+	window.fonts = {
 		main: p5.instance.loadFont("src/fonts/8bitoperator_jve.ttf"),
 		hp: p5.instance.loadFont("src/fonts/hpfont.ttf")
 	};
 }
 
 function initParty() {
-	party = [
+	const sprites = window.sprites;
+
+	window.party = [
 		new Member("Kris", p5.instance.color(0, 255, 255), 90, 10, 2, 0, 4, 3, 2,
 			new SpriteAnimation(sprites.kris.idle, 6), // idle
 			new SpriteAnimation(sprites.kris.intro, 12), // intro
@@ -143,7 +146,8 @@ function initParty() {
 
 
 function initTPBar() {
-	tpBar = {
+	const sprites = window.sprites;
+	window.tpBar = {
 		percent: 0,
 		displayedPercent: 0,
 		image: sprites.tpBar,
@@ -174,7 +178,7 @@ function initTPBar() {
 
 			p5.instance.image(this.image, 9, 41);
 
-			p5.instance.textFont(fonts.main);
+			p5.instance.textFont(window.fonts.main);
 			p5.instance.textSize(32);
 			if (this.percent < 100) {
 				p5.instance.fill(255);
@@ -191,7 +195,8 @@ function initTPBar() {
 }
 
 function initAnimations() { // for miscellaneous animations
-	animations = {
+	const sprites = window.sprites;
+	window.animations = {
 		playerSoul: new SpriteAnimation(sprites.soul, 2),
 		tpGraze: new SpriteAnimation(sprites.tpGraze, 4)
 	};
@@ -204,3 +209,10 @@ function initAll() {
 	initTPBar();
 	initAnimations();
 }
+
+//TODO: remove `window` references
+window.initAll = initAll;
+window.keys = keys;
+window.keyPressed = keyPressed;
+window.keyReleased = keyReleased;
+window.handleKeys = handleKeys;
