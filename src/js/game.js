@@ -33,13 +33,13 @@ function draw() {
 	if (turnPhase == 11) {
 		p5.instance.background(0);
 	}
-	textbox.display();
+	textbox.display(p5.instance);
 	for (i = 0; i < 3; i++) {
 		party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 	}
 
 	tpBar.display();
-	processTurn();
+	processTurn(p5.instance);
 
 	/*
     //for testing fonts:
