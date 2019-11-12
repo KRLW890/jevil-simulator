@@ -1,5 +1,10 @@
 /* eslint-disable no-unused-vars */
 
+import { textbox, processTurn } from "./turn_handler.js";
+
+window.turnPhase = 0;
+window.currentTurn = 0;
+
 function preload() {
 	initAll();
 }

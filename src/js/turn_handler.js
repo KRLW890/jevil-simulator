@@ -15,7 +15,6 @@ turnPhase values (not necessarily final):
 13: turn reset (single frame)
 */
 
-
 var textbox = {
 	text: "* LET THE GAMES BEGIN!",
 	pointer: 0,
@@ -113,9 +112,3 @@ var processTurn = function() {
 };
 
 export { textbox, processTurn };
-
-//TODO: remove `window` references
-window.turnPhase = 0;
-window.currentTurn = 0;
-window.textbox = textbox;
-window.processTurn = processTurn;
