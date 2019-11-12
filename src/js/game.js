@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-var printText, pointer = 0;
+
 
 function preload() {
 	initAll();
@@ -12,7 +12,8 @@ function setup() {
 	noSmooth();
 	frameRate(30);
 	//For testing only
-	printText = function (t, x, y) {
+	//TODO: remove `window` references
+	window.printText = function (t, x, y) {
 		text(t.slice(0, ceil(pointer)), x, y);
 	};
 }
@@ -48,3 +49,10 @@ function draw() {
 	if (turnPhase !== 11) // if it's not in the bullet hell phase
 		handleKeys();
 }
+
+//TODO: remove `window` references
+window.pointer = 0;
+
+window.preload = preload;
+window.setup = setup;
+window.draw = draw;
