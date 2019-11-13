@@ -114,7 +114,7 @@ function initParty() {
 	const sprites = window.sprites;
 
 	window.party = [
-		new Member("Kris", p5.instance.color(0, 255, 255), 90, 10, 2, 0, 4, 3, 2,
+		new Member(p5.instance, "Kris", p5.instance.color(0, 255, 255), 90, 10, 2, 0, 4, 3, 2,
 			new SpriteAnimation(sprites.kris.idle, 6), // idle
 			new SpriteAnimation(sprites.kris.intro, 12), // intro
 			new SpriteAnimation(sprites.kris.fight, 7), // fight
@@ -124,7 +124,7 @@ function initParty() {
 			null, // mercy   TODO: add SpriteAnimation
 			null, // defend  TODO: add SpriteAnimation
 		),
-		new Member("Susie", p5.instance.color(255, 0, 255), 110, 14, 2, 1, 5, 5, 2,
+		new Member(p5.instance,"Susie", p5.instance.color(255, 0, 255), 110, 14, 2, 1, 5, 5, 2,
 			new SpriteAnimation(sprites.susie.idle, 4), // idle
 			null, // intro
 			new SpriteAnimation("images/susie-attack.png", 6), // fight
@@ -134,7 +134,7 @@ function initParty() {
 			new SpriteAnimation("images/susie-spare.png", 9), // mercy
 			new SpriteAnimation("images/susie-defend.png", 6) // defend
 		),
-		new Member("Ralsei", p5.instance.color(0, 255, 0), 70, 8, 2, 7, 9, 4, 2,
+		new Member(p5.instance,"Ralsei", p5.instance.color(0, 255, 0), 70, 8, 2, 7, 9, 4, 2,
 			new SpriteAnimation(sprites.ralsei.idle, 5), // idle
 			new SpriteAnimation(sprites.ralsei.intro, 9), // intro
 			new SpriteAnimation(sprites.ralsei.fight, 6), // fight

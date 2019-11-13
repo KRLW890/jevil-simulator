@@ -20,10 +20,12 @@ import { armors, weapons } from "./item_handler.js";
 
 class Member {
 	constructor(
-		name, color,
+		sketch, name, color,
 		hp, atk, def, mgc, weapon, armor1, armor2,
 		idle, intro, fight, magic, act, item, mercy, defend
 	) {
+		this.sketch = sketch;
+
 		this.name = name;
 		this.color = color;
 		this.default = {
@@ -35,7 +37,7 @@ class Member {
 			armor: [armor1, armor2]
 		};
 
-		this.current = JSON.parse(JSON.stringify(this.default)); // the contents need to be converted a string and then converted back so that this.current is a copy, not a pointer
+		this.current = Object.assign({}, this.default); // the contents need to be converted a string and then converted back so that this.current is a copy, not a pointer
 		this.current.maxHp = this.current.hp; // for the pirouette HP scramble
 		// TODO: adjust current values based on preferences in localStorage
 
@@ -94,18 +96,20 @@ class Member {
 			}
 		}
 
-		p5.instance.image(sprites.menu.options, i * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
+		const { sketch } = this;
+
+		sketch.image(sprites.menu.options, i * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
 
 		if (i == 0 && this.menuSelection.category == 1) {
-			p5.instance.image(sprites.menu.options, i * 212 + 50, 333, 31, 32, 175, 32, 31, 32);
+			sketch.image(sprites.menu.options, i * 212 + 50, 333, 31, 32, 175, 32, 31, 32);
 		} else if (i == 0) {
 			// selected act option
-			p5.instance.image(sprites.menu.options, i * 212 + 50, 333, 31, 32, 175, 0, 31, 32);
+			sketch.image(sprites.menu.options, i * 212 + 50, 333, 31, 32, 175, 0, 31, 32);
 		} // unselected act option
 
 
 		if (this.menuSelection.category != 1 || i != 0) {
-			p5.instance.image(sprites.menu.options, i * 212 + this.menuSelection.category * 35 + 15, 333, 31, 32, this.menuSelection.category * 35, 32, 31, 32);
+			sketch.image(sprites.menu.options, i * 212 + this.menuSelection.category * 35 + 15, 333, 31, 32, this.menuSelection.category * 35, 32, 31, 32);
 		} // selected option, other than act
 
 		/*/ I feel like these should probably be moved somewhere else, but I couldn't think of a better place for now
@@ -124,67 +128,73 @@ class Member {
 
 
 	drawIcon(i) {
+		const { sketch } = this;
+
 		if (this.current.hp <= 0) {
-			p5.instance.image(this.icons[0], i * 212 + 14, 336 - this.menuHeight);
+			sketch.image(this.icons[0], i * 212 + 14, 336 - this.menuHeight);
 		} else if (Math.floor(turnPhase / 2) > i && this.menuSelection.category != -1) {
 			// default icon
-			p5.instance.noStroke();
-			p5.instance.fill(this.color);
-			p5.instance.rect(i * 212 + 18, 335 - this.menuHeight, 22, 24);
-			p5.instance.image(sprites.menu.selected, i * 212 + 18, 335 - this.menuHeight, 22, 24, this.menuSelection.category * 22, 0, 22, 24);
+			sketch.noStroke();
+			sketch.fill(this.color);
+			sketch.rect(i * 212 + 18, 335 - this.menuHeight, 22, 24);
+			sketch.image(sprites.menu.selected, i * 212 + 18, 335 - this.menuHeight, 22, 24, this.menuSelection.category * 22, 0, 22, 24);
 		} else {
-			p5.instance.image(this.icons[0], i * 212 + 14, 336 - this.menuHeight);
+			sketch.image(this.icons[0], i * 212 + 14, 336 - this.menuHeight);
 		} // default icon
 
-		p5.instance.image(this.menuName, i * 212 + 51, 339 - this.menuHeight);
+		sketch.image(this.menuName, i * 212 + 51, 339 - this.menuHeight);
 	}
 
 	drawHP(i) {
-		p5.instance.image(sprites.menu.hpBar, i * 212 + 110, 334 - this.menuHeight);
-		p5.instance.textFont(fonts.hp);
-		p5.instance.textSize(6);
-		p5.instance.textAlign(p5.instance.RIGHT);
+		const { sketch } = this;
+
+		sketch.image(sprites.menu.hpBar, i * 212 + 110, 334 - this.menuHeight);
+		sketch.textFont(fonts.hp);
+		sketch.textSize(6);
+		sketch.textAlign(sketch.RIGHT);
 		if (this.current.hp <= 0) {
-			p5.instance.fill(255, 0, 0);
+			sketch.fill(255, 0, 0);
 		} else if (this.current.hp / this.current.maxHp <= 0.25) {
-			p5.instance.fill(255, 255, 0);
+			sketch.fill(255, 255, 0);
 		} else {
-			p5.instance.fill(255);
+			sketch.fill(255);
 		}
-		p5.instance.text(this.current.hp, (i + 1) * 212 - 52, 344 - this.menuHeight);
-		p5.instance.text(this.current.maxHp, (i + 1) * 212 - 7, 344 - this.menuHeight);
-		p5.instance.textAlign(p5.instance.LEFT);
+		sketch.text(this.current.hp, (i + 1) * 212 - 52, 344 - this.menuHeight);
+		sketch.text(this.current.maxHp, (i + 1) * 212 - 7, 344 - this.menuHeight);
+		sketch.textAlign(sketch.LEFT);
 
 		if (this.current.hp > 0) {
 			// so that the hp bar doesn't go backwards when the character has negative hp
-			p5.instance.fill(this.color);
-			p5.instance.rect(i * 212 + 128, 347 - this.menuHeight, Math.ceil(76 * (this.current.hp / this.current.maxHp)), 9);
+			sketch.fill(this.color);
+			sketch.rect(i * 212 + 128, 347 - this.menuHeight, Math.ceil(76 * (this.current.hp / this.current.maxHp)), 9);
 		}
 	}
 
 	drawMenu(i) {
+		const { sketch } = this;
+
 		if (Math.floor(turnPhase / 2) == i) {
 			this.menuHeight += (32 - this.menuHeight) / 2;
-			p5.instance.fill(0);
-			p5.instance.strokeWeight(2);
-			p5.instance.stroke(this.color);
-			p5.instance.rect(i * 212 + 1, 328, 210, 35);
+			sketch.fill(0);
+			sketch.strokeWeight(2);
+			sketch.stroke(this.color);
+			sketch.rect(i * 212 + 1, 328, 210, 35);
 		} else {
 			this.menuHeight /= 2;
 		}
 
-		p5.instance.noStroke();
-		p5.instance.fill(51, 32, 51);
-		p5.instance.rect(i * 212, 326, 216, 2);
-		p5.instance.rect(i * 212, 362, 216, 3);
-		p5.instance.fill(0);
-		p5.instance.rect(i * 212, 328 - this.menuHeight, 212, 34);
+		sketch.noStroke();
+		sketch.fill(51, 32, 51);
+		sketch.rect(i * 212, 326, 216, 2);
+		sketch.rect(i * 212, 362, 216, 3);
+		sketch.fill(0);
+		sketch.rect(i * 212, 328 - this.menuHeight, 212, 34);
 		if (Math.floor(turnPhase / 2) == i) {
 			this.options(i);
-			p5.instance.noFill();
-			p5.instance.stroke(this.color);
-			p5.instance.rect(i * 212 + 1, 327 - this.menuHeight, 211, 36);
-			p5.instance.noStroke();
+			sketch.noFill();
+			sketch.stroke(this.color);
+			sketch.rect(i * 212 + 1, 327 - this.menuHeight, 211, 36);
+			sketch.noStroke();
 		}
 
 		this.drawIcon(i);
