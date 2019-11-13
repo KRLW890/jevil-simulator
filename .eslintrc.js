@@ -44,10 +44,13 @@ module.exports = {
 		"keyword-spacing": [
 			"error"
 		],
+		/*
+		Causes issues with git's autocrlf
 		"linebreak-style": [
 			"error",
 			"unix"
 		],
+		*/
 		"quotes": [
 			"error",
 			"double"
