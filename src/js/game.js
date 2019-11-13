@@ -5,8 +5,28 @@ import { textbox, processTurn } from "./turn_handler.js";
 window.turnPhase = 0;
 window.currentTurn = 0;
 
+var keys = {
+	all: [],
+	up: 38, down: 40, left: 37, right: 39,
+	select: 90, cancel: 88,
+	pressed: function(code) {
+		return keys.all[code];
+	}
+};
+function keyPressed() {
+	keys.all[p5.instance.keyCode] = true;
+}
+function keyReleased() {
+	keys.all[p5.instance.keyCode] = false;
+}
+function handleKeys() {
+	for (var i = 0; i < keys.all.length; i++) {
+		keys.all[i] = false;
+	}
+}
+
 function preload() {
-	initAll();
+	initAll(p5.instance);
 }
 
 function setup() {
@@ -62,3 +82,7 @@ window.pointer = 0;
 window.preload = preload;
 window.setup = setup;
 window.draw = draw;
+
+window.keys = keys;
+window.keyPressed = keyPressed;
+window.keyReleased = keyReleased;
