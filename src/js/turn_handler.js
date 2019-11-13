@@ -25,9 +25,8 @@ var textbox = {
 		sketch.noStroke();
 		sketch.rect(0, 326, 640, 154);
 
-		pointer = textbox.pointer;
 		sketch.fill(255);
-		printText(textbox.text, 35, 394);
+		sketch.text(textbox.text.slice(0, sketch.ceil(textbox.pointer)), 35, 394);
 		textbox.pointer++;
 	}
 };

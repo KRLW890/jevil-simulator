@@ -37,11 +37,6 @@ function setup() {
 	canvas.parent("game-container");
 	sketch.noSmooth();
 	sketch.frameRate(30);
-	//For testing only
-	//TODO: remove `window` references
-	window.printText = function (t, x, y) {
-		sketch.text(t.slice(0, sketch.ceil(pointer)), x, y);
-	};
 }
 
 function draw() {
@@ -64,15 +59,6 @@ function draw() {
 	tpBar.display();
 	processTurn(sketch);
 
-	/*
-    //for testing fonts:
-    textFont(fonts.main);
-    fill(255);
-    textSize(150);
-    printText("Hello,\n World", 100, 100, 10);
-    pointer += 0.1;
-*/
-
 	// if it's not in the bullet hell phase
 	if (turnPhase !== 11) {
 		handleKeys();
@@ -86,6 +72,4 @@ sketch.keyPressed = keyPressed;
 sketch.keyReleased = keyReleased;
 
 //TODO: remove `window` references
-window.pointer = 0;
-
 window.keys = keys;
