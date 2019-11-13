@@ -61,7 +61,7 @@ class HeartBomb extends Bullet {
 	constructor() {
 		super(Math.random()*100 + 50, -23, 0, 8);
 
-		this.bomb = new SpriteAnimation(sprites.bullets.bombHeart, 2);
+		this.bomb = new SpriteAnimation(p5.instance, sprites.bullets.bombHeart, 2);
 
 		if (Math.random() > 0.5) {
 			this.x += 425;

@@ -115,34 +115,34 @@ function initParty() {
 
 	window.party = [
 		new Member(p5.instance, "Kris", p5.instance.color(0, 255, 255), 90, 10, 2, 0, 4, 3, 2,
-			new SpriteAnimation(sprites.kris.idle, 6), // idle
-			new SpriteAnimation(sprites.kris.intro, 12), // intro
-			new SpriteAnimation(sprites.kris.fight, 7), // fight
-			new SpriteAnimation(sprites.kris.magic, 6), // magic (it's actually Kris' pirouette)
-			new SpriteAnimation(sprites.kris.act, 12), // act
-			new SpriteAnimation(sprites.kris.item, 7), // item
+			new SpriteAnimation(p5.instance, sprites.kris.idle, 6), // idle
+			new SpriteAnimation(p5.instance, sprites.kris.intro, 12), // intro
+			new SpriteAnimation(p5.instance, sprites.kris.fight, 7), // fight
+			new SpriteAnimation(p5.instance, sprites.kris.magic, 6), // magic (it's actually Kris' pirouette)
+			new SpriteAnimation(p5.instance, sprites.kris.act, 12), // act
+			new SpriteAnimation(p5.instance, sprites.kris.item, 7), // item
 			null, // mercy   TODO: add SpriteAnimation
 			null, // defend  TODO: add SpriteAnimation
 		),
 		new Member(p5.instance,"Susie", p5.instance.color(255, 0, 255), 110, 14, 2, 1, 5, 5, 2,
-			new SpriteAnimation(sprites.susie.idle, 4), // idle
+			new SpriteAnimation(p5.instance, sprites.susie.idle, 4), // idle
 			null, // intro
-			new SpriteAnimation("images/susie-attack.png", 6), // fight
+			new SpriteAnimation(p5.instance, "images/susie-attack.png", 6), // fight
 			null, // magic
 			null, // act
-			new SpriteAnimation("images/susie-item.png", 5), // item
-			new SpriteAnimation("images/susie-spare.png", 9), // mercy
-			new SpriteAnimation("images/susie-defend.png", 6) // defend
+			new SpriteAnimation(p5.instance, "images/susie-item.png", 5), // item
+			new SpriteAnimation(p5.instance, "images/susie-spare.png", 9), // mercy
+			new SpriteAnimation(p5.instance, "images/susie-defend.png", 6) // defend
 		),
 		new Member(p5.instance,"Ralsei", p5.instance.color(0, 255, 0), 70, 8, 2, 7, 9, 4, 2,
-			new SpriteAnimation(sprites.ralsei.idle, 5), // idle
-			new SpriteAnimation(sprites.ralsei.intro, 9), // intro
-			new SpriteAnimation(sprites.ralsei.fight, 6), // fight
-			new SpriteAnimation(sprites.ralsei.magic, 10) // magic
+			new SpriteAnimation(p5.instance, sprites.ralsei.idle, 5), // idle
+			new SpriteAnimation(p5.instance, sprites.ralsei.intro, 9), // intro
+			new SpriteAnimation(p5.instance, sprites.ralsei.fight, 6), // fight
+			new SpriteAnimation(p5.instance, sprites.ralsei.magic, 10) // magic
 			// act
-			//new SpriteAnimation("images/ralsei-item.png", 8), // item
+			//new SpriteAnimation(p5.instance, "images/ralsei-item.png", 8), // item
 			//this.magic, // mercy
-			//new SpriteAnimation("images/ralsei-defend.png", 8) // defend
+			//new SpriteAnimation(p5.instance, "images/ralsei-defend.png", 8) // defend
 		)
 	];
 }
@@ -200,8 +200,8 @@ function initTPBar() {
 function initAnimations() { // for miscellaneous animations
 	const sprites = window.sprites;
 	window.animations = {
-		playerSoul: new SpriteAnimation(sprites.soul, 2),
-		tpGraze: new SpriteAnimation(sprites.tpGraze, 4)
+		playerSoul: new SpriteAnimation(p5.instance, sprites.soul, 2),
+		tpGraze: new SpriteAnimation(p5.instance, sprites.tpGraze, 4)
 	};
 }
 

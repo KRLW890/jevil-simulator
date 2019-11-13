@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 
 class SpriteAnimation {
-	constructor(spritesheet, frames) {
+	constructor(sketch, spritesheet, frames) {
+		this.sketch = sketch;
+
 		this.spritesheet = spritesheet;
 		this.frames = frames;
 		this.frameCount = 0;
@@ -12,6 +14,9 @@ class SpriteAnimation {
 		// plays the animation. It can either loop or stop on the last frame
 		// if it is not set to loop, it returns true when the last frame has been played
 		// the speed of the animation is divided by framerate
+
+		const { sketch } = this;
+
 		if (framerate == null) {
 			framerate = 1;
 		}
@@ -34,7 +39,7 @@ class SpriteAnimation {
 			this.playing = true;
 		}
 
-		p5.instance.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 
 		if (loop || this.frameCount < this.frames - 1) {
 			this.frameCount++;
@@ -46,6 +51,7 @@ class SpriteAnimation {
 
 	drawFrame(x, y, frame, w, h) {
 		// draws a specific frame of the animation
+		const { sketch } = this;
 		if (h == null) {
 			if (w == null) {
 				w = this.spritesheet.width/this.frames;
@@ -59,7 +65,7 @@ class SpriteAnimation {
 			w = w * this.spritesheet.width;
 		}
 
-		p5.instance.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
 	}
 }
 
