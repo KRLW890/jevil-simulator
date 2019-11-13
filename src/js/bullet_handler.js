@@ -11,7 +11,9 @@ var dist = function(x1, y1, x2, y2) {
 
 // The parent class of all the individual bullet types. These constructors are in charge of how the bullets behave after being spawned, culminating in a .move() prototype function that all the children constructors need.
 class Bullet {
-	constructor(x, y, xSpeed, ySpeed) {
+	constructor(sketch, x, y, xSpeed, ySpeed) {
+		this.sketch = sketch;
+
 		this.x = x;
 		this.y = y;
 		this.xSpeed = xSpeed;
@@ -58,10 +60,10 @@ class Bullet {
 
 
 class HeartBomb extends Bullet {
-	constructor() {
-		super(Math.random()*100 + 50, -23, 0, 8);
+	constructor(sketch) {
+		super(sketch, Math.random()*100 + 50, -23, 0, 8);
 
-		this.bomb = new SpriteAnimation(p5.instance, sprites.bullets.bombHeart, 2);
+		this.bomb = new SpriteAnimation(sketch, sprites.bullets.bombHeart, 2);
 
 		if (Math.random() > 0.5) {
 			this.x += 425;
@@ -72,6 +74,8 @@ class HeartBomb extends Bullet {
 	}
 
 	move() {
+		const { sketch } = this;
+
 		if (this.phase == 0) {
 			this.bomb.play(this.x-23, this.y-23, true, 2, 2);
 			if (this.y > this.targetY) {
@@ -85,7 +89,7 @@ class HeartBomb extends Bullet {
 				if (this.bullets[i]) {
 					var bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
 					var bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
-					p5.instance.image(sprites.bullets.heart, bulletX-9, bulletY-9);
+					sketch.image(sprites.bullets.heart, bulletX-9, bulletY-9);
 					if (dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
 						if (attackData.iFrames == 0) {
 							this.hit();

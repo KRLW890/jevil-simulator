@@ -125,7 +125,7 @@ var attacks = [
 
 attacks[2].spawnBullets = function() {
 	if (attackData.duration % 25 == 0) {
-		addBullet(new HeartBomb());
+		addBullet(new HeartBomb(p5.instance));
 	}
 };
 
