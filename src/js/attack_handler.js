@@ -15,11 +15,11 @@ var attackData = {
 	collision: false // Using "attackData.collision = false;" instead of "this.hit()" in the Bullet.move functions will make testing collision easier
 };
 
-var executeAttack = function() {
-	p5.instance.stroke(0, 192, 0);
-	p5.instance.fill(0);
-	p5.instance.strokeWeight(4);
-	p5.instance.rect(248, 98, 146, 146); // battle box
+var executeAttack = function(sketch) {
+	sketch.stroke(0, 192, 0);
+	sketch.fill(0);
+	sketch.strokeWeight(4);
+	sketch.rect(248, 98, 146, 146); // battle box
 
 	if (keys.pressed(keys.up) && attackData.playerY > 108) {
 		attackData.playerY -= 4;
@@ -54,7 +54,7 @@ var executeAttack = function() {
 		animations.playerSoul.drawFrame(attackData.playerX-8, attackData.playerY-8, 0);
 	}
 
-	attacks[attackData.id].spawnBullets();
+	attacks[attackData.id].spawnBullets(sketch);
 
 	attackData.collision = false; // for debugging
 	for (var i = 0; i < attackData.bullets.length; i++) {
@@ -123,9 +123,9 @@ var attacks = [
 	new Attack(0, true),   // neo chaos, possibly uses unique damage formula
 ];
 
-attacks[2].spawnBullets = function() {
+attacks[2].spawnBullets = function(sketch) {
 	if (attackData.duration % 25 == 0) {
-		addBullet(new HeartBomb(p5.instance));
+		addBullet(new HeartBomb(sketch));
 	}
 };
 

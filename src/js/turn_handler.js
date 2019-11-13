@@ -91,7 +91,7 @@ var processTurn = function(sketch) {
 		break;
 
 	case 11:
-		executeAttack();
+		executeAttack(sketch);
 		break;
 
 	case 12:
