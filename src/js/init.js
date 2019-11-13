@@ -193,5 +193,4 @@ function initAll(sketch) {
 	initAnimations(sketch);
 }
 
-//TODO: remove `window` references
-window.initAll = initAll;
+export { initAll };

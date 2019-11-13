@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { textbox, processTurn } from "./turn_handler.js";
+import { initAll } from "./init.js";
 
 const sketch = new p5(() => {});
 
