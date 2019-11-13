@@ -2,6 +2,8 @@
 
 import { textbox, processTurn } from "./turn_handler.js";
 
+const sketch = new p5(() => {});
+
 window.turnPhase = 0;
 window.currentTurn = 0;
 
@@ -14,10 +16,10 @@ var keys = {
 	}
 };
 function keyPressed() {
-	keys.all[p5.instance.keyCode] = true;
+	keys.all[sketch.keyCode] = true;
 }
 function keyReleased() {
-	keys.all[p5.instance.keyCode] = false;
+	keys.all[sketch.keyCode] = false;
 }
 function handleKeys() {
 	for (var i = 0; i < keys.all.length; i++) {
@@ -26,40 +28,40 @@ function handleKeys() {
 }
 
 function preload() {
-	initAll(p5.instance);
+	initAll(sketch);
 }
 
 function setup() {
-	canvas = p5.instance.createCanvas(640, 480);
+	const canvas = sketch.createCanvas(640, 480);
 	canvas.parent("game-container");
-	p5.instance.noSmooth();
-	p5.instance.frameRate(30);
+	sketch.noSmooth();
+	sketch.frameRate(30);
 	//For testing only
 	//TODO: remove `window` references
 	window.printText = function (t, x, y) {
-		p5.instance.text(t.slice(0, p5.instance.ceil(pointer)), x, y);
+		sketch.text(t.slice(0, sketch.ceil(pointer)), x, y);
 	};
 }
 
 function draw() {
 	var i;
 
-	p5.instance.background(43, 51, 159);
+	sketch.background(43, 51, 159);
 
 	var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
 	for (i = 0; i < 3; i++) {
 		party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 	}
 	if (turnPhase == 11) {
-		p5.instance.background(0);
+		sketch.background(0);
 	}
-	textbox.display(p5.instance);
+	textbox.display(sketch);
 	for (i = 0; i < 3; i++) {
 		party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 	}
 
 	tpBar.display();
-	processTurn(p5.instance);
+	processTurn(sketch);
 
 	/*
     //for testing fonts:
@@ -76,13 +78,13 @@ function draw() {
 	}
 }
 
+sketch.preload = preload;
+sketch.setup = setup;
+sketch.draw = draw;
+sketch.keyPressed = keyPressed;
+sketch.keyReleased = keyReleased;
+
 //TODO: remove `window` references
 window.pointer = 0;
 
-window.preload = preload;
-window.setup = setup;
-window.draw = draw;
-
 window.keys = keys;
-window.keyPressed = keyPressed;
-window.keyReleased = keyReleased;
