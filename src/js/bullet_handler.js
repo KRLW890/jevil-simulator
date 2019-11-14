@@ -5,10 +5,6 @@
 import { attackData } from "./attack_handler.js";
 import { SpriteAnimation } from "./image_handler.js";
 
-var dist = function(x1, y1, x2, y2) {
-	return Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2));
-};
-
 // The parent class of all the individual bullet types. These constructors are in charge of how the bullets behave after being spawned, culminating in a .move() prototype function that all the children constructors need.
 class Bullet {
 	constructor(sketch, x, y, xSpeed, ySpeed) {
@@ -90,12 +86,12 @@ class HeartBomb extends Bullet {
 					var bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
 					var bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
 					sketch.image(sprites.bullets.heart, bulletX-9, bulletY-9);
-					if (dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
+					if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
 						if (attackData.iFrames == 0) {
 							this.hit();
 						}
 						this.bullets[i] = false;
-					} else if (dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 33 && attackData.iFrames == 0) {
+					} else if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 33 && attackData.iFrames == 0) {
 						this.graze();
 					}
 				}
