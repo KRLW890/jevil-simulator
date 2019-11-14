@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 
-// This file stores all the bullet types, which can be called by attacks
+import { attackData } from "../attack_handler.js";
 
-import { attackData } from "./attack_handler.js";
-
-// The parent class of all the individual bullet types. These constructors are in charge of how the bullets behave after being spawned, culminating in a .move() prototype function that all the children constructors need.
+//The parent class of all the individual bullet types.
+//These are in charge of how the bullets behave
+//after being spawned, culminating in a .move() prototype function
+//that all the children classes need.
 class Bullet {
 	constructor(sketch, x, y, xSpeed, ySpeed) {
 		this.sketch = sketch;
@@ -54,4 +55,4 @@ class Bullet {
 }
 
 
-export { Bullet };
+export default Bullet;

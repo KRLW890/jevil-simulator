@@ -1,5 +1,5 @@
 import { attackData } from "../../attack_handler.js";
-import { Bullet } from "../../bullet_handler.js";
+import Bullet from "../Bullet.js";
 import { SpriteAnimation } from "../../image_handler.js";
 
 class HeartBomb extends Bullet {
