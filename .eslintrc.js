@@ -1,14 +1,9 @@
 const temporaryGlobals = {
 	"animations": "writable",
-	"canvas": "writable",
 	"fonts": "writable",
-	"handleKeys": "writable",
-	"initAll": "writable",
 	"keys": "writable",
-	"p5": "readonly",
 	"party": "writable",
 	"pointer": "writable",
-	"printText": "writable",
 	"sprites": "writable",
 	"tpBar": "writable",
 	"turnPhase": "writable",
@@ -23,6 +18,7 @@ module.exports = {
 	"globals": {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly",
+		"p5": "readonly",
 		...temporaryGlobals
 	},
 	"parserOptions": {
