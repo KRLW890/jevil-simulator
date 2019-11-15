@@ -132,7 +132,7 @@ class Member {
 
 		if (this.current.hp <= 0) {
 			sketch.image(this.icons[0], i * 212 + 14, 336 - this.menuHeight);
-		} else if (Math.floor(turnPhase / 2) > i && this.menuSelection.category != -1) {
+		} else if (turnPhase > i && this.menuSelection.category != -1) {
 			// default icon
 			sketch.noStroke();
 			sketch.fill(this.color);
@@ -173,7 +173,7 @@ class Member {
 	drawMenu(i) {
 		const { sketch } = this;
 
-		if (Math.floor(turnPhase / 2) == i) {
+		if (turnPhase == i) {
 			this.menuHeight += (32 - this.menuHeight) / 2;
 			sketch.fill(0);
 			sketch.strokeWeight(2);
@@ -189,7 +189,7 @@ class Member {
 		sketch.rect(i * 212, 362, 216, 3);
 		sketch.fill(0);
 		sketch.rect(i * 212, 328 - this.menuHeight, 212, 34);
-		if (Math.floor(turnPhase / 2) == i) {
+		if (turnPhase == i) {
 			this.options(i);
 			sketch.noFill();
 			sketch.stroke(this.color);

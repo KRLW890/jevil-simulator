@@ -3,9 +3,10 @@
 /* This file handles the flow of each turn
 
 turnPhase values (not necessarily final):
-0-1: Kris selection
-2-3: Susie selection
-4-5: Ralsei selection
+0: Kris selection
+1: Susie selection
+2: Ralsei selection
+TODO: shift other turnPhase numbers to adjust for removal of turnPhases 3-5
 6: Kris action
 7: Susie action
 8: Ralsei action
@@ -23,10 +24,10 @@ var processTurn = function(game) {
 	sketch.text(turnPhase, 610, 25); // for debugging purposes
 
 	switch (turnPhase) {
+	case 1:
 	case 2:
-	case 4:
 		if (keys.pressed(keys.cancel)) {
-			if (party[Math.floor((turnPhase-2)/2)].current.hp > 0) {
+			if (party[turnPhase].current.hp > 0) {
 				turnPhase -= 2;
 			} else if (party[0].current.hp > 0) {
 				turnPhase -= 4;
@@ -34,38 +35,15 @@ var processTurn = function(game) {
 		}
 		//fallthrough
 	case 0:
+		if (turnPhase <= 2 && party[turnPhase].current.hp <= 0) {
+			turnPhase++;
+		}
+
 		if (keys.pressed(keys.select)) {
 			turnPhase++;
-			while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0) {
-				turnPhase += 2;
-			}
 		}
 		break;
-
-	case 1:
-	case 3:
-	case 5:
-		do { // temporary
-			turnPhase++;
-		} while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0);
-
-		if (keys.pressed(keys.select)) {
-			do {
-				turnPhase++;
-			} while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0);
-		} else if (keys.pressed(keys.cancel)) {
-			turnPhase--;
-		}
-		break;
-
-		// skipping some cases here for now; I want to start adding Jevil's attacks ASAP
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-		turnPhase++;
-		break;
-
+	// skipping some cases here for now; I want to start adding Jevil's attacks ASAP
 	case 10:
 		game.textBox.clear();
 
@@ -93,6 +71,8 @@ var processTurn = function(game) {
 			turnPhase = 6;
 		}
 		break;
+	default:
+		turnPhase++;
 	}
 };
 
