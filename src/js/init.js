@@ -107,12 +107,12 @@ function initParty(sketch) {
 		new Member(sketch, "Susie", sketch.color(255, 0, 255), 110, 14, 2, 1, 5, 5, 2,
 			new SpriteAnimation(sketch, sprites.susie.idle, 4), // idle
 			null, // intro
-			new SpriteAnimation(sketch, "images/susie-attack.png", 6), // fight
+			new SpriteAnimation(sketch, sprites.susie.attack, 6), // fight
 			null, // magic
 			null, // act
-			new SpriteAnimation(sketch, "images/susie-item.png", 5), // item
-			new SpriteAnimation(sketch, "images/susie-spare.png", 9), // mercy
-			new SpriteAnimation(sketch, "images/susie-defend.png", 6) // defend
+			new SpriteAnimation(sketch, sprites.susie.item, 5), // item
+			new SpriteAnimation(sketch, sprites.susie.spare, 9), // mercy
+			new SpriteAnimation(sketch, sprites.susie.defend, 6) // defend
 		),
 		new Member(sketch, "Ralsei", sketch.color(0, 255, 0), 70, 8, 2, 7, 9, 4, 2,
 			new SpriteAnimation(sketch, sprites.ralsei.idle, 5), // idle
