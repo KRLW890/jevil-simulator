@@ -17,21 +17,9 @@ turnPhase values (not necessarily final):
 
 import { attacks, attackData, executeAttack } from "./attack_handler.js";
 
-var textbox = {
-	text: "* LET THE GAMES BEGIN!",
-	pointer: 0,
-	display: function(sketch) {
-		sketch.fill(0);
-		sketch.noStroke();
-		sketch.rect(0, 326, 640, 154);
+var processTurn = function(game) {
+	const { sketch } = game;
 
-		sketch.fill(255);
-		sketch.text(textbox.text.slice(0, sketch.ceil(textbox.pointer)), 35, 394);
-		textbox.pointer++;
-	}
-};
-
-var processTurn = function(sketch) {
 	sketch.text(turnPhase, 610, 25); // for debugging purposes
 
 	switch (turnPhase) {
@@ -46,10 +34,6 @@ var processTurn = function(sketch) {
 		}
 		//fallthrough
 	case 0:
-		if (textbox.text == "") {
-			textbox.text = "* LET THE GAMES BEGIN!"; //placeholder text
-			textbox.pointer = Infinity;
-		}
 		if (keys.pressed(keys.select)) {
 			turnPhase++;
 			while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0) {
@@ -61,8 +45,6 @@ var processTurn = function(sketch) {
 	case 1:
 	case 3:
 	case 5:
-		textbox.text = "";
-
 		do { // temporary
 			turnPhase++;
 		} while (turnPhase < 6 && party[Math.floor(turnPhase/2)].current.hp <= 0);
@@ -85,6 +67,8 @@ var processTurn = function(sketch) {
 		break;
 
 	case 10:
+		game.textBox.clear();
+
 		attacks[attackData.id].prepareAttack();
 		turnPhase++;
 		break;
@@ -112,4 +96,4 @@ var processTurn = function(sketch) {
 	}
 };
 
-export { textbox, processTurn };
+export { processTurn };

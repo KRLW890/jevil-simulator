@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
-import { textbox, processTurn } from "./turn_handler.js";
+import TextBox from "./struct/TextBox.js";
+import { processTurn } from "./turn_handler.js";
 import { initAll } from "./init.js";
 
 var keys = {
@@ -15,6 +16,9 @@ var keys = {
 class Game {
 	constructor() {
 		this.sketch = new p5(() => {});
+
+		this.textBox = new TextBox(this.sketch);
+		this.textBox.setText("* LET THE GAMES BEGIN!");
 
 		this.preload = this.preload.bind(this);
 		this.setup = this.setup.bind(this);
@@ -60,13 +64,13 @@ class Game {
 		if (turnPhase == 11) {
 			this.sketch.background(0);
 		}
-		textbox.display(this.sketch);
+		this.textBox.display(this.sketch);
 		for (i = 0; i < 3; i++) {
 			party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 		}
 
 		tpBar.display();
-		processTurn(this.sketch);
+		processTurn(this);
 
 		// if it's not in the bullet hell phase
 		if (turnPhase !== 11) {
