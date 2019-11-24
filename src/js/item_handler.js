@@ -30,7 +30,7 @@ class Equippable extends Item {
 
 /* eslint-disable no-unused-vars */
 
-var consumables = [
+const consumables = [
 	new Consumable("[empty]", "For masochists", Infinity, true, function (member) { }),
 	new Consumable("Dark Candy", "Heals 40HP", Infinity, false, function (member) { }),
 	new Consumable("ReviveMint", "Heals Downed Ally", 2, false, function (member) { }),
@@ -52,7 +52,7 @@ var consumables = [
 
 /* eslint-enable no-unused-vars */
 
-var armors = [
+const armors = [
 	new Equippable("[empty]", "For masochists", Infinity, true, true, true, 0, 0, 0, 0),
 	new Equippable("Pink Ribbon", "+TP range", 0, true, false, true, 0, 0, 0, 1),
 	new Equippable("Amber Card", "+1 DF", Infinity, true, true, true, 0, 1, 0, 0),
@@ -63,7 +63,7 @@ var armors = [
 	new Equippable("Jevilstail", "+2 all", 0, true, true, true, 2, 2, 2, 0)
 ];
 
-var weapons = [
+const weapons = [
 	new Equippable("Wood Blade", "+0 AT", 1, true, false, false, 0, 0, 0, 0),
 	new Equippable("Mane Ax", "+0 AT", 1, false, true, false, 0, 0, 0, 0),
 	new Equippable("Red Scarf", "+0 AT", 1, false, false, true, 0, 0, 0, 0),
@@ -77,7 +77,7 @@ var weapons = [
 ];
 
 
-var inventory = [4, 6, 8, 8, 8, 8, 8, 8, 8, 14, 2, 2];
+const inventory = [4, 6, 8, 8, 8, 8, 8, 8, 8, 14, 2, 2];
 
 export {
 	consumables,

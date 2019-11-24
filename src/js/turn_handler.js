@@ -16,7 +16,7 @@ TODO: shift other turnPhase numbers to adjust for removal of turnPhases 3-5
 
 import { attacks, attackData, executeAttack } from "./attack_handler.js";
 
-var processTurn = function(game) {
+const processTurn = function(game) {
 	const { sketch } = game;
 
 	sketch.text(turnPhase, 610, 25); // for debugging purposes
@@ -56,7 +56,7 @@ var processTurn = function(game) {
 	case 12:
 		attackData.bullets = [];
 		attackData.iFrames = 0;
-		for (var i = 2; i >= 0; i--) {
+		for (let i = 2; i >= 0; i--) {
 			party[i].menuSelection = { category: 0, suboption: 0 };
 			if (party[i].current.hp <= 0) {
 				party[i].current.hp += Math.floor(party[i].current.maxHp/7.5);

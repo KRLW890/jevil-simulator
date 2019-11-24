@@ -28,10 +28,10 @@ class HeartBomb extends Bullet {
 			this.aimAtPlayer(5);
 			this.phase++;
 		} else if (this.phase == 2) {
-			for (var i = 0; i < 4; i++) {
+			for (let i = 0; i < 4; i++) {
 				if (this.bullets[i]) {
-					var bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
-					var bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
+					const bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
+					const bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
 					sketch.image(sprites.bullets.heart, bulletX-9, bulletY-9);
 					if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
 						if (attackData.iFrames == 0) {

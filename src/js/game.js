@@ -2,7 +2,7 @@ import TextBox from "./struct/TextBox.js";
 import { processTurn } from "./turn_handler.js";
 import { initAll } from "./init.js";
 
-var keys = {
+const keys = {
 	all: [],
 	up: 38, down: 40, left: 37, right: 39,
 	select: 90, cancel: 88,
@@ -51,19 +51,17 @@ class Game {
 	}
 
 	draw() {
-		var i;
-
 		this.sketch.background(43, 51, 159);
 
-		var xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
-		for (i = 0; i < 3; i++) {
+		const xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
+		for (let i = 0; i < 3; i++) {
 			party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 		}
 		if (turnPhase == 11) {
 			this.sketch.background(0);
 		}
 		this.textBox.display(this.sketch);
-		for (i = 0; i < 3; i++) {
+		for (let i = 0; i < 3; i++) {
 			party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 		}
 

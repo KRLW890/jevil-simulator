@@ -1,6 +1,6 @@
 import HeartBomb from "./struct/bullets/HeartBomb.js";
 
-var attackData = {
+const attackData = {
 	id: 2, // determines which attack to use this turn
 	baseDamage: 40,
 	bullets: [],
@@ -13,7 +13,7 @@ var attackData = {
 	collision: false // Using "attackData.collision = false;" instead of "this.hit()" in the Bullet.move functions will make testing collision easier
 };
 
-var executeAttack = function(sketch) {
+const executeAttack = function(sketch) {
 	sketch.stroke(0, 192, 0);
 	sketch.fill(0);
 	sketch.strokeWeight(4);
@@ -55,7 +55,7 @@ var executeAttack = function(sketch) {
 	attacks[attackData.id].spawnBullets(sketch);
 
 	attackData.collision = false; // for debugging
-	for (var i = 0; i < attackData.bullets.length; i++) {
+	for (let i = 0; i < attackData.bullets.length; i++) {
 		if (attackData.bullets[i] != null) {
 			// if the function returns true, delete it from the array
 			if (attackData.bullets[i].move() === true) {
@@ -93,8 +93,8 @@ class Attack {
 	}
 }
 
-var addBullet = function(bullet) { // should be called as addBullet(new BulletType());
-	var i = 0;
+const addBullet = function(bullet) { // should be called as addBullet(new BulletType());
+	let i = 0;
 	while (attackData.bullets[i] != null) {
 		i++;
 	}
@@ -102,7 +102,7 @@ var addBullet = function(bullet) { // should be called as addBullet(new BulletTy
 	attackData.bullets[i] = bullet;
 };
 
-var attacks = [
+const attacks = [
 	new Attack(50, false), // tiny "ohp" spades
 	new Attack(50, false), // big spade ringaround 1
 	new Attack(40, true),  // heart bombs

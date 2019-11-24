@@ -1,7 +1,7 @@
 import { Member } from "./party_handler.js";
 import { SpriteAnimation } from "./image_handler.js";
 
-function loadSprites(sketch) {
+const loadSprites = function (sketch) {
 	window.sprites = {
 		kris: {
 			idle: sketch.loadImage("src/sprites/kris-idle.png"),
@@ -75,16 +75,16 @@ function loadSprites(sketch) {
 			spade: sketch.loadImage("src/sprites/bullets/bullet-ace.png")
 		}
 	};
-}
+};
 
-function loadFonts(sketch) {
+const loadFonts = function(sketch) {
 	window.fonts = {
 		main: sketch.loadFont("src/fonts/8bitoperator_jve.ttf"),
 		hp: sketch.loadFont("src/fonts/hpfont.ttf")
 	};
-}
+};
 
-function initParty(sketch) {
+const initParty = function(sketch) {
 	const sprites = window.sprites;
 
 	window.party = [
@@ -119,10 +119,10 @@ function initParty(sketch) {
 			//new SpriteAnimation(sketch, "images/ralsei-defend.png", 8) // defend
 		)
 	];
-}
+};
 
 
-function initTPBar(sketch) {
+const initTPBar = function(sketch) {
 	const sprites = window.sprites;
 	window.tpBar = {
 		percent: 0,
@@ -169,22 +169,22 @@ function initTPBar(sketch) {
 			}
 		}
 	};
-}
+};
 
-function initAnimations(sketch) { // for miscellaneous animations
+const initAnimations = function(sketch) { // for miscellaneous animations
 	const sprites = window.sprites;
 	window.animations = {
 		playerSoul: new SpriteAnimation(sketch, sprites.soul, 2),
 		tpGraze: new SpriteAnimation(sketch, sprites.tpGraze, 4)
 	};
-}
+};
 
-function initAll(sketch) {
+const initAll = function(sketch) {
 	loadSprites(sketch);
 	loadFonts(sketch);
 	initParty(sketch);
 	initTPBar(sketch);
 	initAnimations(sketch);
-}
+};
 
 export { initAll };

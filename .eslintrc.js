@@ -33,6 +33,10 @@ module.exports = {
 		"curly": [
 			"error"
 		],
+		"func-style": [
+			"error",
+			"expression"
+		],
 		"indent": [
 			"error",
 			"tab"
@@ -47,6 +51,9 @@ module.exports = {
 			"unix"
 		],
 		*/
+		"no-var": [
+			"error"
+		],
 		"quotes": [
 			"error",
 			"double"

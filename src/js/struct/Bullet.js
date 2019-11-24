@@ -19,7 +19,7 @@ class Bullet {
 	}
 
 	aimAtPlayer(speed) {
-		var hypotenuse = Math.sqrt(Math.pow(attackData.playerX-this.x, 2) + Math.pow(attackData.playerY-this.y, 2));
+		const hypotenuse = Math.sqrt(Math.pow(attackData.playerX-this.x, 2) + Math.pow(attackData.playerY-this.y, 2));
 		this.xSpeed = speed * (attackData.playerX-this.x)/hypotenuse;
 		this.ySpeed = speed * (attackData.playerY-this.y)/hypotenuse;
 	}
@@ -33,14 +33,14 @@ class Bullet {
 	}
 
 	hit() {
-		var hyp = 1, isDefending = 0; // temporary variables
+		const hyp = 1, isDefending = 0; // temporary variables
 		if (attackData.target < 3) {
 			party[attackData.target].current.hp -= attackData.baseDamage*hyp - 3*party[attackData.target].current.def - isDefending*(Math.floor(attackData.baseDamage/3) - party[attackData.target].current.def);
 			if (party[attackData.target].current.hp <= 0) {
 				party[attackData.target].current.hp = -party[attackData.target].current.maxHp/2;
 			}
 		} else { // 3 means all characters are targets
-			for (var i = 0; i < 3; i++) {
+			for (let i = 0; i < 3; i++) {
 				if (party[i].current.hp > 0) {
 					party[i].current.hp -= attackData.baseDamage*hyp - 3*party[i].current.def - isDefending*(Math.floor(attackData.baseDamage/3) - party[i].current.def);
 					if (party[i].current.hp <= 0) {

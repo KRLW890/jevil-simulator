@@ -43,7 +43,7 @@ class Member {
 		this.current.atk += weapons[this.current.weapon].atk;
 		this.current.def += weapons[this.current.weapon].def;
 		this.current.mgc += weapons[this.current.weapon].mgc;
-		for (var i = 0; i < 2; i++) {
+		for (let i = 0; i < 2; i++) {
 			this.current.atk += armors[this.current.armor[i]].atk;
 			this.current.def += armors[this.current.armor[i]].def;
 			this.current.mgc += armors[this.current.armor[i]].mgc;
