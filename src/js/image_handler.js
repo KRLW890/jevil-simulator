@@ -20,15 +20,15 @@ class SpriteAnimation {
 		}
 		if (h == null) {
 			if (w == null) {
-				w = this.spritesheet.width/this.frames;
+				w = this.spritesheet.width / this.frames;
 				h = this.spritesheet.height;
 			} else {
 				h = w * this.spritesheet.height;
-				w = w * this.spritesheet.width/this.frames;
+				w = w * this.spritesheet.width / this.frames;
 			}
 		} else {
 			h = h * this.spritesheet.height;
-			w = w * this.spritesheet.width/this.frames;
+			w = w * this.spritesheet.width / this.frames;
 		}
 
 		if (this.playing === false) {
@@ -37,7 +37,7 @@ class SpriteAnimation {
 			this.playing = true;
 		}
 
-		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width / this.frames) * (Math.floor(this.frameCount / framerate) % this.frames), 0, this.spritesheet.width / this.frames, this.spritesheet.height);
 
 		if (loop || this.frameCount < this.frames - 1) {
 			this.frameCount++;
@@ -52,7 +52,7 @@ class SpriteAnimation {
 		const { sketch } = this;
 		if (h == null) {
 			if (w == null) {
-				w = this.spritesheet.width/this.frames;
+				w = this.spritesheet.width / this.frames;
 				h = this.spritesheet.height;
 			} else {
 				h = w * this.spritesheet.height;
@@ -63,7 +63,7 @@ class SpriteAnimation {
 			w = w * this.spritesheet.width;
 		}
 
-		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width/this.frames) * frame, 0, this.spritesheet.width/this.frames, this.spritesheet.height);
+		sketch.image(this.spritesheet, x, y, w, h, (this.spritesheet.width / this.frames) * frame, 0, this.spritesheet.width / this.frames, this.spritesheet.height);
 	}
 }
 

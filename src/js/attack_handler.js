@@ -44,12 +44,12 @@ const executeAttack = function(sketch) {
 
 	// for debugging
 	if (attackData.collision) {
-		animations.playerSoul.drawFrame(attackData.playerX-8, attackData.playerY-8, 1);
+		animations.playerSoul.drawFrame(attackData.playerX - 8, attackData.playerY - 8, 1);
 	} else if (attackData.iFrames > 0) {
-		animations.playerSoul.play(attackData.playerX-8, attackData.playerY-8, true, 6);
+		animations.playerSoul.play(attackData.playerX - 8, attackData.playerY - 8, true, 6);
 		attackData.iFrames--;
 	} else {
-		animations.playerSoul.drawFrame(attackData.playerX-8, attackData.playerY-8, 0);
+		animations.playerSoul.drawFrame(attackData.playerX - 8, attackData.playerY - 8, 0);
 	}
 
 	attacks[attackData.id].spawnBullets(sketch);
@@ -85,7 +85,7 @@ class Attack {
 		if (this.isMultiTarget) {
 			attackData.target = 3;
 		} else {
-			attackData.target = Math.floor(Math.random()*3);
+			attackData.target = Math.floor(Math.random() * 3);
 		}
 
 		attackData.playerX = 320;

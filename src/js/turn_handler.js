@@ -59,10 +59,10 @@ const processTurn = function(game) {
 		for (let i = 2; i >= 0; i--) {
 			party[i].menuSelection = { category: 0, suboption: 0 };
 			if (party[i].current.hp <= 0) {
-				party[i].current.hp += Math.floor(party[i].current.maxHp/7.5);
+				party[i].current.hp += Math.floor(party[i].current.maxHp / 7.5);
 			}
 			if (party[i].current.hp > 0) {
-				turnPhase = i*2;
+				turnPhase = i * 2;
 			}
 		}
 		if (turnPhase == 12) {

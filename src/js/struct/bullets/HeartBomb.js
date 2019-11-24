@@ -4,7 +4,7 @@ import { SpriteAnimation } from "../../image_handler.js";
 
 class HeartBomb extends Bullet {
 	constructor(sketch) {
-		super(sketch, Math.random()*100 + 50, -23, 0, 8);
+		super(sketch, Math.random() * 100 + 50, -23, 0, 8);
 
 		this.bomb = new SpriteAnimation(sketch, sprites.bullets.bombHeart, 2);
 
@@ -12,7 +12,7 @@ class HeartBomb extends Bullet {
 			this.x += 425;
 		}
 
-		this.targetY = Math.random()*200 + 100;
+		this.targetY = Math.random() * 200 + 100;
 		this.bullets = [true, true, true, true];
 	}
 
@@ -20,7 +20,7 @@ class HeartBomb extends Bullet {
 		const { sketch } = this;
 
 		if (this.phase == 0) {
-			this.bomb.play(this.x-23, this.y-23, true, 2, 2);
+			this.bomb.play(this.x - 23, this.y - 23, true, 2, 2);
 			if (this.y > this.targetY) {
 				this.phase++;
 			}
@@ -30,9 +30,9 @@ class HeartBomb extends Bullet {
 		} else if (this.phase == 2) {
 			for (let i = 0; i < 4; i++) {
 				if (this.bullets[i]) {
-					const bulletX = this.x + 40*Math.sin(i*Math.PI/2 + this.frameCount/20);
-					const bulletY = this.y + 40*Math.cos(i*Math.PI/2 + this.frameCount/20);
-					sketch.image(sprites.bullets.heart, bulletX-9, bulletY-9);
+					const bulletX = this.x + 40 * Math.sin(i * Math.PI / 2 + this.frameCount / 20);
+					const bulletY = this.y + 40 * Math.cos(i * Math.PI / 2 + this.frameCount / 20);
+					sketch.image(sprites.bullets.heart, bulletX - 9, bulletY - 9);
 					if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
 						if (attackData.iFrames == 0) {
 							this.hit();
