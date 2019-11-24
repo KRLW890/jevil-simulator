@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 class SpriteAnimation {
 	constructor(sketch, spritesheet, frames) {
 		this.sketch = sketch;

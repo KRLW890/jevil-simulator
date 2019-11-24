@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /*
     TODO:
 Lots and lots of sprites and animations.
@@ -74,9 +72,11 @@ class Member {
 		this.icons = sprites[this.name.toLowerCase()].icons;
 	}
 
+	/*
 	drawSprite(x, y) {
 
 	}
+	*/
 
 	options() {
 		if (this.menuSelection.category == 5) {

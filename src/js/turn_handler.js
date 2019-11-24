@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /* This file handles the flow of each turn
 
 turnPhase values (not necessarily final):

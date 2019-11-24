@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 class Item {
 	constructor(name, desc, limit) {
 		this.name = name;
@@ -30,6 +28,7 @@ class Equippable extends Item {
 	}
 }
 
+/* eslint-disable no-unused-vars */
 
 var consumables = [
 	new Consumable("[empty]", "For masochists", Infinity, true, function (member) { }),
@@ -50,6 +49,8 @@ var consumables = [
 	new Consumable("FavSandwich", "Heals ALL HP", 0, false, function (member) { }), //500hp
 	new Consumable("RouxlsRoux", "Heals 50HP", Infinity, false, function (member) { }),
 ];
+
+/* eslint-enable no-unused-vars */
 
 var armors = [
 	new Equippable("[empty]", "For masochists", Infinity, true, true, true, 0, 0, 0, 0),

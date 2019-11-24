@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import HeartBomb from "./struct/bullets/HeartBomb.js";
 
 var attackData = {

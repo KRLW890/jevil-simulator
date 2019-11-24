@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import TextBox from "./struct/TextBox.js";
 import { processTurn } from "./turn_handler.js";
 import { initAll } from "./init.js";
