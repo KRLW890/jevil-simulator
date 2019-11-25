@@ -54,7 +54,7 @@ const executeAttack = function(game) {
 		animations.playerSoul.drawFrame(attackData.playerX - 8, attackData.playerY - 8, 0);
 	}
 
-	attacks[attackData.id].spawnBullets(sketch);
+	attacks[attackData.id].spawnBullets(game);
 
 	attackData.collision = false; // for debugging
 	for (let i = 0; i < attackData.bullets.length; i++) {
@@ -123,9 +123,9 @@ const attacks = [
 	new Attack(0, true),   // neo chaos, possibly uses unique damage formula
 ];
 
-attacks[2].spawnBullets = function(sketch) {
+attacks[2].spawnBullets = function(game) {
 	if (attackData.duration % 25 === 0) {
-		addBullet(new HeartBomb(sketch));
+		addBullet(new HeartBomb(game));
 	}
 };
 

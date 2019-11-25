@@ -3,10 +3,10 @@ import Bullet from "../Bullet.js";
 import { SpriteAnimation } from "../../image_handler.js";
 
 class HeartBomb extends Bullet {
-	constructor(sketch) {
-		super(sketch, Math.random() * 100 + 50, -23, 0, 8);
+	constructor(game) {
+		super(game, Math.random() * 100 + 50, -23, 0, 8);
 
-		this.bomb = new SpriteAnimation(sketch, sprites.bullets.bombHeart, 2);
+		this.bomb = new SpriteAnimation(game.sketch, sprites.bullets.bombHeart, 2);
 
 		if (Math.random() > 0.5) {
 			this.x += 425;
@@ -17,7 +17,7 @@ class HeartBomb extends Bullet {
 	}
 
 	move() {
-		const { sketch } = this;
+		const { sketch } = this.game;
 
 		if (this.phase === 0) {
 			this.bomb.play(this.x - 23, this.y - 23, true, 2, 2);

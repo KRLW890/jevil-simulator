@@ -1,4 +1,5 @@
 import TextBox from "./struct/TextBox.js";
+import TBBar from "./struct/TPBar.js";
 import { processTurn } from "./turn_handler.js";
 import { initAll } from "./init.js";
 
@@ -14,11 +15,6 @@ const keys = {
 class Game {
 	constructor() {
 		this.sketch = new p5(() => {});
-
-		this.turnPhase = 0;
-
-		this.textBox = new TextBox(this.sketch);
-		this.textBox.setText("* LET THE GAMES BEGIN!");
 
 		this.preload = this.preload.bind(this);
 		this.setup = this.setup.bind(this);
@@ -42,10 +38,22 @@ class Game {
 		canvas.parent("game-container");
 		this.sketch.noSmooth();
 		this.sketch.frameRate(30);
+
+
+		this.turnPhase = 0;
+
+		this.tpBar = new TBBar(this);
+
+		this.textBox = new TextBox(this.sketch);
+		this.textBox.setText("* LET THE GAMES BEGIN!");
+
 	}
 
 	keyPressed() {
 		keys.all[this.sketch.keyCode] = true;
+		if (this.sketch.key === "l") {
+			this.tpBar.percent += 10;
+		}
 	}
 
 	keyReleased() {
@@ -67,7 +75,7 @@ class Game {
 			party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 		}
 
-		tpBar.display();
+		this.tpBar.display();
 		processTurn(this);
 
 		// if it's not in the bullet hell phase

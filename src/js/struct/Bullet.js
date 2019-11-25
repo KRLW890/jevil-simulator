@@ -7,8 +7,8 @@ import { attackData } from "../attack_handler.js";
 //after being spawned, culminating in a .move() prototype function
 //that all the children classes need.
 class Bullet {
-	constructor(sketch, x, y, xSpeed, ySpeed) {
-		this.sketch = sketch;
+	constructor(game, x, y, xSpeed, ySpeed) {
+		this.game = game;
 
 		this.x = x;
 		this.y = y;
@@ -26,6 +26,9 @@ class Bullet {
 
 	graze() {
 		// this function will need some major reworking.
+
+		const { tpBar } = this.game;
+
 		if (tpBar.percent < 100) {
 			tpBar.percent += 1;
 		}
