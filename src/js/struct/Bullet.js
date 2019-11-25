@@ -27,7 +27,7 @@ class Bullet {
 	graze() {
 		// this function will need some major reworking.
 
-		const { tpBar } = this.game;
+		const { tpBar, animations } = this.game;
 
 		if (tpBar.percent < 100) {
 			tpBar.percent += 1;

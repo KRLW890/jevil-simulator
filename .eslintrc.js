@@ -1,7 +1,3 @@
-const temporaryGlobals = {
-	"animations": "writable"
-};
-
 module.exports = {
 	"env": {
 		"browser": true,
@@ -11,8 +7,7 @@ module.exports = {
 	"globals": {
 		"Atomics": "readonly",
 		"SharedArrayBuffer": "readonly",
-		"p5": "readonly",
-		...temporaryGlobals
+		"p5": "readonly"
 	},
 	"parserOptions": {
 		"ecmaVersion": 2018,

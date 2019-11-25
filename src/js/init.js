@@ -129,15 +129,10 @@ const initParty = function(game) {
 const initAnimations = function(game) {
 	const { sketch, sprites } = game;
 
-	window.animations = {
+	return {
 		playerSoul: new SpriteAnimation(sketch, sprites.soul, 2),
 		tpGraze: new SpriteAnimation(sketch, sprites.tpGraze, 4)
 	};
 };
 
-const initAll = function(game) {
-	initParty(game);
-	initAnimations(game);
-};
-
-export { loadSprites, initParty, loadFonts, initAll };
+export { loadSprites, initParty, loadFonts, initAnimations };

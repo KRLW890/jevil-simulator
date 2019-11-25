@@ -14,7 +14,7 @@ const attackData = {
 };
 
 const executeAttack = function(game) {
-	const { sketch, keys, keyNames } = game;
+	const { sketch, animations, keys, keyNames } = game;
 
 	sketch.stroke(0, 192, 0);
 	sketch.fill(0);
