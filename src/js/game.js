@@ -15,6 +15,8 @@ class Game {
 	constructor() {
 		this.sketch = new p5(() => {});
 
+		this.turnPhase = 0;
+
 		this.textBox = new TextBox(this.sketch);
 		this.textBox.setText("* LET THE GAMES BEGIN!");
 
@@ -57,7 +59,7 @@ class Game {
 		for (let i = 0; i < 3; i++) {
 			party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 		}
-		if (turnPhase == 11) {
+		if (this.turnPhase == 11) {
 			this.sketch.background(0);
 		}
 		this.textBox.display(this.sketch);
@@ -69,7 +71,7 @@ class Game {
 		processTurn(this);
 
 		// if it's not in the bullet hell phase
-		if (turnPhase !== 11) {
+		if (this.turnPhase !== 11) {
 			keys.all = [];
 		}
 	}
@@ -79,5 +81,4 @@ window.game = new Game();
 
 //TODO: remove `window` references
 window.keys = keys;
-window.turnPhase = 0;
 window.currentTurn = 0;

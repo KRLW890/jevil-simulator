@@ -129,7 +129,7 @@ class Member {
 
 
 	drawIcon() {
-		const { sketch } = this.game;
+		const { sketch, turnPhase } = this.game;
 
 		if (this.current.hp <= 0) {
 			sketch.image(this.icons[0], this.partyIndex * 212 + 14, 336 - this.menuHeight);
@@ -172,7 +172,7 @@ class Member {
 	}
 
 	drawMenu() {
-		const { sketch } = this.game;
+		const { sketch, turnPhase } = this.game;
 
 		if (turnPhase == this.partyIndex) {
 			this.menuHeight += (32 - this.menuHeight) / 2;

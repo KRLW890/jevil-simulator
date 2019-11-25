@@ -19,26 +19,26 @@ import { attacks, attackData, executeAttack } from "./attack_handler.js";
 const processTurn = function(game) {
 	const { sketch } = game;
 
-	sketch.text(turnPhase, 610, 25); // for debugging purposes
+	sketch.text(game.turnPhase, 610, 25); // for debugging purposes
 
-	switch (turnPhase) {
+	switch (game.turnPhase) {
 	case 1:
 	case 2:
 		if (keys.pressed(keys.cancel)) {
-			if (party[turnPhase].current.hp > 0) {
-				turnPhase -= 2;
+			if (party[game.turnPhase].current.hp > 0) {
+				game.turnPhase -= 2;
 			} else if (party[0].current.hp > 0) {
-				turnPhase -= 4;
+				game.turnPhase -= 4;
 			}
 		}
 		//fallthrough
 	case 0:
-		if (turnPhase <= 2 && party[turnPhase].current.hp <= 0) {
-			turnPhase++;
+		if (game.turnPhase <= 2 && party[game.turnPhase].current.hp <= 0) {
+			game.turnPhase++;
 		}
 
 		if (keys.pressed(keys.select)) {
-			turnPhase++;
+			game.turnPhase++;
 		}
 		break;
 	// skipping some cases here for now; I want to start adding Jevil's attacks ASAP
@@ -46,7 +46,7 @@ const processTurn = function(game) {
 		game.textBox.clear();
 
 		attacks[attackData.id].prepareAttack();
-		turnPhase++;
+		game.turnPhase++;
 		break;
 
 	case 11:
@@ -62,15 +62,15 @@ const processTurn = function(game) {
 				party[i].current.hp += Math.floor(party[i].current.maxHp / 7.5);
 			}
 			if (party[i].current.hp > 0) {
-				turnPhase = i * 2;
+				game.turnPhase = i * 2;
 			}
 		}
-		if (turnPhase == 12) {
-			turnPhase = 6;
+		if (game.turnPhase == 12) {
+			game.turnPhase = 6;
 		}
 		break;
 	default:
-		turnPhase++;
+		game.turnPhase++;
 	}
 };
 

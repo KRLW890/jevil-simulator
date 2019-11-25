@@ -68,7 +68,7 @@ const executeAttack = function(game) {
 
 	attackData.duration--;
 	if (attackData.duration <= 0) {
-		turnPhase++;
+		game.turnPhase++;
 	}
 };
 
