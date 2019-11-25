@@ -149,7 +149,7 @@ class Member {
 	}
 
 	drawHP() {
-		const { sketch, sprites } = this.game;
+		const { sketch, sprites, fonts } = this.game;
 
 		sketch.image(sprites.menu.hpBar, this.partyIndex * 212 + 110, 334 - this.menuHeight);
 		sketch.textFont(fonts.hp);

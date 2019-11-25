@@ -82,7 +82,7 @@ const loadSprites = function (game) {
 const loadFonts = function(game) {
 	const { sketch } = game;
 
-	window.fonts = {
+	return {
 		main: sketch.loadFont("src/fonts/8bitoperator_jve.ttf"),
 		hp: sketch.loadFont("src/fonts/hpfont.ttf")
 	};
@@ -136,9 +136,8 @@ const initAnimations = function(game) {
 };
 
 const initAll = function(game) {
-	loadFonts(game);
 	initParty(game);
 	initAnimations(game);
 };
 
-export { loadSprites, initParty, initAll };
+export { loadSprites, initParty, loadFonts, initAll };

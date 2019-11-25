@@ -8,7 +8,7 @@ class TPBar {
 	}
 
 	display() {
-		const { sketch } = this.game;
+		const { sketch, fonts } = this.game;
 
 		sketch.noStroke();
 		sketch.fill(128, 0, 0);
@@ -36,7 +36,7 @@ class TPBar {
 
 		sketch.image(this.image, 9, 41);
 
-		sketch.textFont(window.fonts.main);
+		sketch.textFont(fonts.main);
 		sketch.textSize(32);
 		if (this.percent < 100) {
 			sketch.fill(255);

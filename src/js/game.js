@@ -3,7 +3,7 @@ import TBBar from "./struct/TPBar.js";
 import KeyboardHandler from "./struct/KeyboardHandler.js";
 
 import { processTurn } from "./turn_handler.js";
-import { loadSprites, initParty, initAll } from "./init.js";
+import { loadSprites, initParty, loadFonts, initAll } from "./init.js";
 
 class Game {
 	constructor() {
@@ -25,6 +25,7 @@ class Game {
 	preload() {
 		this.sprites = loadSprites(this);
 		this.party = initParty(this);
+		this.fonts = loadFonts(this);
 
 		initAll(this);
 	}
