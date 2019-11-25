@@ -124,7 +124,7 @@ const attacks = [
 ];
 
 attacks[2].spawnBullets = function(sketch) {
-	if (attackData.duration % 25 == 0) {
+	if (attackData.duration % 25 === 0) {
 		addBullet(new HeartBomb(sketch));
 	}
 };

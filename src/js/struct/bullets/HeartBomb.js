@@ -19,26 +19,26 @@ class HeartBomb extends Bullet {
 	move() {
 		const { sketch } = this;
 
-		if (this.phase == 0) {
+		if (this.phase === 0) {
 			this.bomb.play(this.x - 23, this.y - 23, true, 2, 2);
 			if (this.y > this.targetY) {
 				this.phase++;
 			}
-		} else if (this.phase == 1) {
+		} else if (this.phase === 1) {
 			this.aimAtPlayer(5);
 			this.phase++;
-		} else if (this.phase == 2) {
+		} else if (this.phase === 2) {
 			for (let i = 0; i < 4; i++) {
 				if (this.bullets[i]) {
 					const bulletX = this.x + 40 * Math.sin(i * Math.PI / 2 + this.frameCount / 20);
 					const bulletY = this.y + 40 * Math.cos(i * Math.PI / 2 + this.frameCount / 20);
 					sketch.image(sprites.bullets.heart, bulletX - 9, bulletY - 9);
 					if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 17) {
-						if (attackData.iFrames == 0) {
+						if (attackData.iFrames === 0) {
 							this.hit();
 						}
 						this.bullets[i] = false;
-					} else if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 33 && attackData.iFrames == 0) {
+					} else if (sketch.dist(attackData.playerX, attackData.playerY, bulletX, bulletY) < 33 && attackData.iFrames === 0) {
 						this.graze();
 					}
 				}

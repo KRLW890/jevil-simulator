@@ -32,6 +32,13 @@ module.exports = {
 		"curly": [
 			"error"
 		],
+		"eqeqeq": [
+			"error",
+			"always",
+			{
+				"null": "ignore"
+			}
+		],
 		"func-style": [
 			"error",
 			"expression"

@@ -59,7 +59,7 @@ class Game {
 		for (let i = 0; i < 3; i++) {
 			party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 		}
-		if (this.turnPhase == 11) {
+		if (this.turnPhase === 11) {
 			this.sketch.background(0);
 		}
 		this.textBox.display(this.sketch);

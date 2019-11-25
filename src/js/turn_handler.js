@@ -65,7 +65,7 @@ const processTurn = function(game) {
 				game.turnPhase = i * 2;
 			}
 		}
-		if (game.turnPhase == 12) {
+		if (game.turnPhase === 12) {
 			game.turnPhase = 6;
 		}
 		break;

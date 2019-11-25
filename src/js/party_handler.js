@@ -79,18 +79,18 @@ class Member {
 	*/
 
 	options() {
-		if (this.menuSelection.category == 5) {
+		if (this.menuSelection.category === 5) {
 			this.menuSelection.category = 1;
 		}
 
 		if (keys.pressed(keys.left)) {
-			if (this.menuSelection.category == 0) {
+			if (this.menuSelection.category === 0) {
 				this.menuSelection.category = 4;
 			} else {
 				this.menuSelection.category--;
 			}
 		} else if (keys.pressed(keys.right)) {
-			if (this.menuSelection.category == 4) {
+			if (this.menuSelection.category === 4) {
 				this.menuSelection.category = 0;
 			} else {
 				this.menuSelection.category++;
@@ -101,15 +101,15 @@ class Member {
 
 		sketch.image(sprites.menu.options, this.partyIndex * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
 
-		if (this.partyNumi == 0 && this.menuSelection.category == 1) {
+		if (this.partyNumi === 0 && this.menuSelection.category === 1) {
 			sketch.image(sprites.menu.options, this.partyIndex * 212 + 50, 333, 31, 32, 175, 32, 31, 32);
-		} else if (this.partyIndex == 0) {
+		} else if (this.partyIndex === 0) {
 			// selected act option
 			sketch.image(sprites.menu.options, this.partyIndex * 212 + 50, 333, 31, 32, 175, 0, 31, 32);
 		} // unselected act option
 
 
-		if (this.menuSelection.category != 1 || this.partyIndex != 0) {
+		if (this.menuSelection.category !== 1 || this.partyIndex !== 0) {
 			sketch.image(sprites.menu.options, this.partyIndex * 212 + this.menuSelection.category * 35 + 15, 333, 31, 32, this.menuSelection.category * 35, 32, 31, 32);
 		} // selected option, other than act
 
@@ -133,7 +133,7 @@ class Member {
 
 		if (this.current.hp <= 0) {
 			sketch.image(this.icons[0], this.partyIndex * 212 + 14, 336 - this.menuHeight);
-		} else if (turnPhase > this.partyIndex && this.menuSelection.category != -1) {
+		} else if (turnPhase > this.partyIndex && this.menuSelection.category !== -1) {
 			// default icon
 			sketch.noStroke();
 			sketch.fill(this.color);
@@ -174,7 +174,7 @@ class Member {
 	drawMenu() {
 		const { sketch, turnPhase } = this.game;
 
-		if (turnPhase == this.partyIndex) {
+		if (turnPhase === this.partyIndex) {
 			this.menuHeight += (32 - this.menuHeight) / 2;
 			sketch.fill(0);
 			sketch.strokeWeight(2);
@@ -190,7 +190,7 @@ class Member {
 		sketch.rect(this.partyIndex * 212, 362, 216, 3);
 		sketch.fill(0);
 		sketch.rect(this.partyIndex * 212, 328 - this.menuHeight, 212, 34);
-		if (turnPhase == this.partyIndex) {
+		if (turnPhase === this.partyIndex) {
 			this.options(this.partyIndex);
 			sketch.noFill();
 			sketch.stroke(this.color);

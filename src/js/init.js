@@ -143,7 +143,7 @@ const initTPBar = function(game) {
 			sketch.rect(42, 46, 19, 187);
 			sketch.stroke(255);
 			sketch.strokeWeight(2);
-			if (this.percent == this.displayedPercent) {
+			if (this.percent === this.displayedPercent) {
 				sketch.fill(255, 160, 64);
 				sketch.rect(40, (1 - (this.percent / 100)) * 190 + 45, 23, 189 - (1 - (this.percent / 100)) * 190);
 			} else if (this.percent > this.displayedPercent) {
