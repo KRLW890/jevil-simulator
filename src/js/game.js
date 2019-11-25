@@ -49,6 +49,7 @@ class Game {
 
 		this.keys = new KeyboardHandler();
 
+		this.currentTurn = 0;
 		this.turnPhase = 0;
 
 		this.tpBar = new TBBar(this);
@@ -95,6 +96,3 @@ class Game {
 }
 
 window.game = new Game();
-
-//TODO: remove `window` references
-window.currentTurn = 0;
