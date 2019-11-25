@@ -91,7 +91,7 @@ const loadFonts = function(game) {
 const initParty = function(game) {
 	const { sketch, sprites } = game;
 
-	window.party = [
+	return [
 		new Member(game, "Kris", sketch.color(0, 255, 255), 0, 90, 10, 2, 0, 4, 3, 2,
 			new SpriteAnimation(sketch, sprites.kris.idle, 6), // idle
 			new SpriteAnimation(sketch, sprites.kris.intro, 12), // intro
@@ -141,4 +141,4 @@ const initAll = function(game) {
 	initAnimations(game);
 };
 
-export { loadSprites, initAll };
+export { loadSprites, initParty, initAll };

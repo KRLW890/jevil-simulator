@@ -1,9 +1,7 @@
 const temporaryGlobals = {
 	"animations": "writable",
 	"fonts": "writable",
-	"keys": "writable",
-	"party": "writable",
-	"pointer": "writable"
+	"keys": "writable"
 };
 
 module.exports = {

@@ -17,7 +17,7 @@ TODO: shift other turnPhase numbers to adjust for removal of turnPhases 3-5
 import { attacks, attackData, executeAttack } from "./attack_handler.js";
 
 const processTurn = function(game) {
-	const { sketch } = game;
+	const { sketch, party } = game;
 
 	sketch.text(game.turnPhase, 610, 25); // for debugging purposes
 

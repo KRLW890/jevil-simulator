@@ -36,6 +36,8 @@ class Bullet {
 	}
 
 	hit() {
+		const { party } = this.game;
+
 		const hyp = 1, isDefending = 0; // temporary variables
 		if (attackData.target < 3) {
 			party[attackData.target].current.hp -= attackData.baseDamage * hyp - 3 * party[attackData.target].current.def - isDefending * (Math.floor(attackData.baseDamage / 3) - party[attackData.target].current.def);

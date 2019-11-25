@@ -1,7 +1,7 @@
 import TextBox from "./struct/TextBox.js";
 import TBBar from "./struct/TPBar.js";
 import { processTurn } from "./turn_handler.js";
-import { loadSprites, initAll } from "./init.js";
+import { loadSprites, initParty, initAll } from "./init.js";
 
 const keys = {
 	all: [],
@@ -31,6 +31,7 @@ class Game {
 
 	preload() {
 		this.sprites = loadSprites(this);
+		this.party = initParty(this);
 
 		initAll(this);
 	}
@@ -67,14 +68,14 @@ class Game {
 
 		const xy = [{ x: 74, y: 98 }, { x: 54, y: 156 }, { x: 100, y: 214 }]; // temporary variables; I plan to implement this better later
 		for (let i = 0; i < 3; i++) {
-			party[i].idle.play(xy[i].x, xy[i].y, true, 6);
+			this.party[i].idle.play(xy[i].x, xy[i].y, true, 6);
 		}
 		if (this.turnPhase === 11) {
 			this.sketch.background(0);
 		}
 		this.textBox.display(this.sketch);
 		for (let i = 0; i < 3; i++) {
-			party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
+			this.party[i].drawMenu(i); // so that the menu will always appear on top of the character sprites
 		}
 
 		this.tpBar.display();
