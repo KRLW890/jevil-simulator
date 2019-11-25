@@ -32,7 +32,7 @@ class Game {
 	}
 
 	preload() {
-		initAll(this.sketch);
+		initAll(this);
 	}
 
 	setup() {

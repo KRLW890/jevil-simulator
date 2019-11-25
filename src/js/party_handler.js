@@ -18,11 +18,11 @@ import { armors, weapons } from "./item_handler.js";
 
 class Member {
 	constructor(
-		sketch, name, color, partyIndex,
+		game, name, color, partyIndex,
 		hp, atk, def, mgc, weapon, armor1, armor2,
 		idle, intro, fight, magic, act, item, mercy, defend
 	) {
-		this.sketch = sketch;
+		this.game = game;
 
 		this.name = name;
 		this.color = color;
@@ -97,7 +97,7 @@ class Member {
 			}
 		}
 
-		const { sketch } = this;
+		const { sketch } = this.game;
 
 		sketch.image(sprites.menu.options, this.partyIndex * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
 
@@ -129,7 +129,7 @@ class Member {
 
 
 	drawIcon() {
-		const { sketch } = this;
+		const { sketch } = this.game;
 
 		if (this.current.hp <= 0) {
 			sketch.image(this.icons[0], this.partyIndex * 212 + 14, 336 - this.menuHeight);
@@ -147,7 +147,7 @@ class Member {
 	}
 
 	drawHP() {
-		const { sketch } = this;
+		const { sketch } = this.game;
 
 		sketch.image(sprites.menu.hpBar, this.partyIndex * 212 + 110, 334 - this.menuHeight);
 		sketch.textFont(fonts.hp);
@@ -172,7 +172,7 @@ class Member {
 	}
 
 	drawMenu() {
-		const { sketch } = this;
+		const { sketch } = this.game;
 
 		if (turnPhase == this.partyIndex) {
 			this.menuHeight += (32 - this.menuHeight) / 2;

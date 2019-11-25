@@ -13,7 +13,9 @@ const attackData = {
 	collision: false // Using "attackData.collision = false;" instead of "this.hit()" in the Bullet.move functions will make testing collision easier
 };
 
-const executeAttack = function(sketch) {
+const executeAttack = function(game) {
+	const { sketch } = game;
+
 	sketch.stroke(0, 192, 0);
 	sketch.fill(0);
 	sketch.strokeWeight(4);

@@ -50,7 +50,7 @@ const processTurn = function(game) {
 		break;
 
 	case 11:
-		executeAttack(sketch);
+		executeAttack(game);
 		break;
 
 	case 12:

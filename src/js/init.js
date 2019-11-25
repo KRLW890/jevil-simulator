@@ -1,7 +1,9 @@
 import { Member } from "./party_handler.js";
 import { SpriteAnimation } from "./image_handler.js";
 
-const loadSprites = function (sketch) {
+const loadSprites = function (game) {
+	const { sketch } = game;
+
 	window.sprites = {
 		kris: {
 			idle: sketch.loadImage("src/sprites/kris-idle.png"),
@@ -77,18 +79,22 @@ const loadSprites = function (sketch) {
 	};
 };
 
-const loadFonts = function(sketch) {
+const loadFonts = function(game) {
+	const { sketch } = game;
+
 	window.fonts = {
 		main: sketch.loadFont("src/fonts/8bitoperator_jve.ttf"),
 		hp: sketch.loadFont("src/fonts/hpfont.ttf")
 	};
 };
 
-const initParty = function(sketch) {
+const initParty = function(game) {
+	const { sketch } = game;
+
 	const sprites = window.sprites;
 
 	window.party = [
-		new Member(sketch, "Kris", sketch.color(0, 255, 255), 0, 90, 10, 2, 0, 4, 3, 2,
+		new Member(game, "Kris", sketch.color(0, 255, 255), 0, 90, 10, 2, 0, 4, 3, 2,
 			new SpriteAnimation(sketch, sprites.kris.idle, 6), // idle
 			new SpriteAnimation(sketch, sprites.kris.intro, 12), // intro
 			new SpriteAnimation(sketch, sprites.kris.fight, 7), // fight
@@ -98,7 +104,7 @@ const initParty = function(sketch) {
 			null, // mercy   TODO: add SpriteAnimation
 			null, // defend  TODO: add SpriteAnimation
 		),
-		new Member(sketch, "Susie", sketch.color(255, 0, 255), 1, 110, 14, 2, 1, 5, 5, 2,
+		new Member(game, "Susie", sketch.color(255, 0, 255), 1, 110, 14, 2, 1, 5, 5, 2,
 			new SpriteAnimation(sketch, sprites.susie.idle, 4), // idle
 			null, // intro
 			new SpriteAnimation(sketch, sprites.susie.attack, 6), // fight
@@ -108,7 +114,7 @@ const initParty = function(sketch) {
 			new SpriteAnimation(sketch, sprites.susie.spare, 9), // mercy
 			new SpriteAnimation(sketch, sprites.susie.defend, 6) // defend
 		),
-		new Member(sketch, "Ralsei", sketch.color(0, 255, 0), 2, 70, 8, 2, 7, 9, 4, 2,
+		new Member(game, "Ralsei", sketch.color(0, 255, 0), 2, 70, 8, 2, 7, 9, 4, 2,
 			new SpriteAnimation(sketch, sprites.ralsei.idle, 5), // idle
 			new SpriteAnimation(sketch, sprites.ralsei.intro, 9), // intro
 			new SpriteAnimation(sketch, sprites.ralsei.fight, 6), // fight
@@ -122,8 +128,11 @@ const initParty = function(sketch) {
 };
 
 
-const initTPBar = function(sketch) {
+const initTPBar = function(game) {
+	const { sketch } = game;
+
 	const sprites = window.sprites;
+
 	window.tpBar = {
 		percent: 0,
 		displayedPercent: 0,
@@ -171,7 +180,10 @@ const initTPBar = function(sketch) {
 	};
 };
 
-const initAnimations = function(sketch) { // for miscellaneous animations
+// for miscellaneous animations
+const initAnimations = function(game) {
+	const { sketch } = game;
+
 	const sprites = window.sprites;
 	window.animations = {
 		playerSoul: new SpriteAnimation(sketch, sprites.soul, 2),
@@ -179,12 +191,12 @@ const initAnimations = function(sketch) { // for miscellaneous animations
 	};
 };
 
-const initAll = function(sketch) {
-	loadSprites(sketch);
-	loadFonts(sketch);
-	initParty(sketch);
-	initTPBar(sketch);
-	initAnimations(sketch);
+const initAll = function(game) {
+	loadSprites(game);
+	loadFonts(game);
+	initParty(game);
+	initTPBar(game);
+	initAnimations(game);
 };
 
 export { initAll };
