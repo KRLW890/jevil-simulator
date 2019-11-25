@@ -4,7 +4,7 @@ class TPBar {
 
 		this.percent = 0;
 		this.displayedPercent = 0;
-		this.image = window.sprites.tpBar;
+		this.image = game.sprites.tpBar;
 	}
 
 	display() {

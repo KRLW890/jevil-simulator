@@ -66,6 +66,8 @@ class Member {
 		this.defend = defend;
 
 		// these can be retrieved automatically
+		const { sprites } = game;
+
 		this.damage = sprites[this.name.toLowerCase()].damage;
 		this.down = sprites[this.name.toLowerCase()].down;
 		this.menuName = sprites[this.name.toLowerCase()].menuName;
@@ -97,7 +99,7 @@ class Member {
 			}
 		}
 
-		const { sketch } = this.game;
+		const { sketch, sprites } = this.game;
 
 		sketch.image(sprites.menu.options, this.partyIndex * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
 
@@ -129,7 +131,7 @@ class Member {
 
 
 	drawIcon() {
-		const { sketch, turnPhase } = this.game;
+		const { sketch, sprites, turnPhase } = this.game;
 
 		if (this.current.hp <= 0) {
 			sketch.image(this.icons[0], this.partyIndex * 212 + 14, 336 - this.menuHeight);
@@ -147,7 +149,7 @@ class Member {
 	}
 
 	drawHP() {
-		const { sketch } = this.game;
+		const { sketch, sprites } = this.game;
 
 		sketch.image(sprites.menu.hpBar, this.partyIndex * 212 + 110, 334 - this.menuHeight);
 		sketch.textFont(fonts.hp);

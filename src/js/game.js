@@ -1,7 +1,7 @@
 import TextBox from "./struct/TextBox.js";
 import TBBar from "./struct/TPBar.js";
 import { processTurn } from "./turn_handler.js";
-import { initAll } from "./init.js";
+import { loadSprites, initAll } from "./init.js";
 
 const keys = {
 	all: [],
@@ -30,6 +30,8 @@ class Game {
 	}
 
 	preload() {
+		this.sprites = loadSprites(this);
+
 		initAll(this);
 	}
 

@@ -4,7 +4,7 @@ import { SpriteAnimation } from "./image_handler.js";
 const loadSprites = function (game) {
 	const { sketch } = game;
 
-	window.sprites = {
+	return {
 		kris: {
 			idle: sketch.loadImage("src/sprites/kris-idle.png"),
 			intro: sketch.loadImage("src/sprites/kris-intro.png"),
@@ -89,9 +89,7 @@ const loadFonts = function(game) {
 };
 
 const initParty = function(game) {
-	const { sketch } = game;
-
-	const sprites = window.sprites;
+	const { sketch, sprites } = game;
 
 	window.party = [
 		new Member(game, "Kris", sketch.color(0, 255, 255), 0, 90, 10, 2, 0, 4, 3, 2,
@@ -129,9 +127,8 @@ const initParty = function(game) {
 
 // for miscellaneous animations
 const initAnimations = function(game) {
-	const { sketch } = game;
+	const { sketch, sprites } = game;
 
-	const sprites = window.sprites;
 	window.animations = {
 		playerSoul: new SpriteAnimation(sketch, sprites.soul, 2),
 		tpGraze: new SpriteAnimation(sketch, sprites.tpGraze, 4)
@@ -139,10 +136,9 @@ const initAnimations = function(game) {
 };
 
 const initAll = function(game) {
-	loadSprites(game);
 	loadFonts(game);
 	initParty(game);
 	initAnimations(game);
 };
 
-export { initAll };
+export { loadSprites, initAll };
