@@ -14,30 +14,30 @@ const attackData = {
 };
 
 const executeAttack = function(game) {
-	const { sketch } = game;
+	const { sketch, keys, keyNames } = game;
 
 	sketch.stroke(0, 192, 0);
 	sketch.fill(0);
 	sketch.strokeWeight(4);
 	sketch.rect(248, 98, 146, 146); // battle box
 
-	if (keys.pressed(keys.up) && attackData.playerY > 108) {
+	if (keys.isPressed(keyNames.up) && attackData.playerY > 108) {
 		attackData.playerY -= 4;
 		if (attackData.playerY < 108) {
 			attackData.playerY = 108;
 		}
-	} else if (keys.pressed(keys.down) && attackData.playerY < 234) {
+	} else if (keys.isPressed(keyNames.down) && attackData.playerY < 234) {
 		attackData.playerY += 4;
 		if (attackData.playerY > 234) {
 			attackData.playerY = 234;
 		}
 	}
-	if (keys.pressed(keys.left) && attackData.playerX > 258) {
+	if (keys.isPressed(keyNames.left) && attackData.playerX > 258) {
 		attackData.playerX -= 4;
 		if (attackData.playerX < 258) {
 			attackData.playerX = 258;
 		}
-	} else if (keys.pressed(keys.right) && attackData.playerX < 384) {
+	} else if (keys.isPressed(keyNames.right) && attackData.playerX < 384) {
 		attackData.playerX += 4;
 		if (attackData.playerX > 384) {
 			attackData.playerX = 384;

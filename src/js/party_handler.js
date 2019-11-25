@@ -81,25 +81,25 @@ class Member {
 	*/
 
 	options() {
+		const { sketch, sprites, keys, keyNames } = this.game;
+
 		if (this.menuSelection.category === 5) {
 			this.menuSelection.category = 1;
 		}
 
-		if (keys.pressed(keys.left)) {
+		if (keys.isPressed(keyNames.left)) {
 			if (this.menuSelection.category === 0) {
 				this.menuSelection.category = 4;
 			} else {
 				this.menuSelection.category--;
 			}
-		} else if (keys.pressed(keys.right)) {
+		} else if (keys.isPressed(keyNames.right)) {
 			if (this.menuSelection.category === 4) {
 				this.menuSelection.category = 0;
 			} else {
 				this.menuSelection.category++;
 			}
 		}
-
-		const { sketch, sprites } = this.game;
 
 		sketch.image(sprites.menu.options, this.partyIndex * 212 + 15, 333, 171, 32, 0, 0, 171, 32); // all 5 options, unselected (magic, not act)
 

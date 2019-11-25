@@ -17,14 +17,14 @@ TODO: shift other turnPhase numbers to adjust for removal of turnPhases 3-5
 import { attacks, attackData, executeAttack } from "./attack_handler.js";
 
 const processTurn = function(game) {
-	const { sketch, party } = game;
+	const { sketch, keys, keyNames, party } = game;
 
 	sketch.text(game.turnPhase, 610, 25); // for debugging purposes
 
 	switch (game.turnPhase) {
 	case 1:
 	case 2:
-		if (keys.pressed(keys.cancel)) {
+		if (keys.isPressed(keyNames.cancel)) {
 			if (party[game.turnPhase].current.hp > 0) {
 				game.turnPhase -= 2;
 			} else if (party[0].current.hp > 0) {
@@ -37,7 +37,7 @@ const processTurn = function(game) {
 			game.turnPhase++;
 		}
 
-		if (keys.pressed(keys.select)) {
+		if (keys.isPressed(keyNames.select)) {
 			game.turnPhase++;
 		}
 		break;

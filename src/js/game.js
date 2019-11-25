@@ -1,16 +1,9 @@
 import TextBox from "./struct/TextBox.js";
 import TBBar from "./struct/TPBar.js";
+import KeyboardHandler from "./struct/KeyboardHandler.js";
+
 import { processTurn } from "./turn_handler.js";
 import { loadSprites, initParty, initAll } from "./init.js";
-
-const keys = {
-	all: [],
-	up: 38, down: 40, left: 37, right: 39,
-	select: 90, cancel: 88,
-	pressed: function(code) {
-		return keys.all[code];
-	}
-};
 
 class Game {
 	constructor() {
@@ -39,9 +32,22 @@ class Game {
 	setup() {
 		const canvas = this.sketch.createCanvas(640, 480);
 		canvas.parent("game-container");
+
 		this.sketch.noSmooth();
 		this.sketch.frameRate(30);
 
+		const { keyCodes } = KeyboardHandler;
+
+		this.keyNames = {
+			up: keyCodes.UP_ARROW,
+			down: keyCodes.DOWN_ARROW,
+			left: keyCodes.LEFT_ARROW,
+			right: keyCodes.RIGHT_ARROW,
+			cancel: keyCodes.X,
+			select: keyCodes.Z
+		};
+
+		this.keys = new KeyboardHandler();
 
 		this.turnPhase = 0;
 
@@ -53,14 +59,14 @@ class Game {
 	}
 
 	keyPressed() {
-		keys.all[this.sketch.keyCode] = true;
+		this.keys.pressKey(this.sketch.keyCode);
 		if (this.sketch.key === "l") {
 			this.tpBar.percent += 10;
 		}
 	}
 
 	keyReleased() {
-		keys.all[this.sketch.keyCode] = false;
+		this.keys.releaseKey(this.sketch.keyCode);
 	}
 
 	draw() {
@@ -83,7 +89,7 @@ class Game {
 
 		// if it's not in the bullet hell phase
 		if (this.turnPhase !== 11) {
-			keys.all = [];
+			this.keys.releaseAll();
 		}
 	}
 }
@@ -91,5 +97,4 @@ class Game {
 window.game = new Game();
 
 //TODO: remove `window` references
-window.keys = keys;
 window.currentTurn = 0;
